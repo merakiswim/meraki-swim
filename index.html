@@ -74,7 +74,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <span class="text-xs uppercase font-bold tracking-[0.3em] text-meraki-ocean bg-white border border-meraki-sand px-4 py-1.5 rounded-full inline-block mb-5 shadow-sm">Temporada Verano • Stock Disponible</span>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl mx-auto leading-[1.1]">Mallas de baño masculinas con diseño y actitud.</h1>
-            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-9">Tela de secado rápido, corte cómodo y estampas exclusivas. Armá tu carrito y enviá tu pedido directo a nuestro WhatsApp.</p>
+            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-9">Tela de secado rápido, corte cómodo y estampas exclusivas. Tocá cualquier foto para verla en grande, armá tu carrito y enviá tu pedido directo a nuestro WhatsApp.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#catalogo" class="w-full sm:w-auto bg-meraki-dark text-white px-8 py-4 rounded-full font-semibold tracking-wide hover:bg-meraki-ocean transition-all shadow-lg inline-flex items-center justify-center space-x-2">
                     <span>Explorar Modelos</span>
@@ -93,7 +93,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
                 <h2 class="text-3xl font-extrabold tracking-tight mb-2">Colección Oficial</h2>
-                <p class="text-gray-500 text-sm">Elegí tus modelos favoritos, seleccioná el talle y finalizá tu compra en un clic.</p>
+                <p class="text-gray-500 text-sm">Tocá las imágenes para hacer zoom, elegí tu talle y finalizá tu compra.</p>
             </div>
             
             <!-- Filtros de categoría -->
@@ -182,6 +182,17 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Modal / Vista Previa de Imagen en Grande -->
+    <div id="image-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <button id="close-modal" class="absolute top-5 right-5 text-white text-3xl hover:text-gray-300 p-2 cursor-pointer focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="relative max-w-3xl w-full max-h-[90vh] flex flex-col items-center">
+            <img id="modal-img" src="" alt="Vista previa" class="max-h-[80vh] w-auto object-contain rounded-xl shadow-2xl">
+            <p id="modal-caption" class="text-white font-bold text-lg mt-4 tracking-wide text-center"></p>
+        </div>
+    </div>
+
     <!-- Carrito Lateral (Drawer) -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div id="cart-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
@@ -243,9 +254,15 @@
                 const card = document.createElement('div');
                 card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-meraki-sand flex flex-col group';
                 card.innerHTML = `
-                    <div class="relative bg-gray-100 aspect-[4/5] overflow-hidden">
+                    <div class="relative bg-gray-100 aspect-[4/5] overflow-hidden cursor-pointer" onclick="openModal('${p.image}', '${p.name}')">
                         <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x750/EFECE6/141414?text=Subir+${p.image}'">
                         <span class="absolute top-3.5 left-3.5 bg-meraki-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">${p.badge}</span>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="bg-white/90 text-meraki-dark text-xs font-bold px-3.5 py-2 rounded-full shadow-lg flex items-center space-x-1.5">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <span>Ver imagen</span>
+                            </span>
+                        </div>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="font-bold text-lg text-meraki-dark leading-snug mb-1.5">${p.name}</h3>
@@ -267,6 +284,26 @@
                 grid.appendChild(card);
             });
         }
+
+        // Funciones del Modal de Imagen
+        function openModal(imgSrc, title) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+
+            modalImg.src = imgSrc;
+            modalCaption.innerText = title;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        document.getElementById('close-modal').addEventListener('click', closeModal);
+        document.getElementById('image-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'image-modal') closeModal();
+        });
 
         function updateSize(productId, size) {
             selectedSizes[productId] = size;
@@ -366,29 +403,3 @@
                 e.target.classList.add('bg-meraki-dark', 'text-white');
                 renderProducts(e.target.dataset.filter);
             });
-        });
-
-        document.getElementById('checkout-whatsapp').addEventListener('click', () => {
-            if(cart.length === 0) {
-                alert("Agregá al menos una malla al carrito antes de enviar el pedido.");
-                return;
-            }
-            let message = "Hola *MERAKI SWIM.CO*! 👋 Quisiera realizar el siguiente pedido:\n\n";
-            let total = 0;
-            cart.forEach(item => {
-                message += `▪️ *${item.name}*\n   Talle: ${item.size} | Cantidad: ${item.qty} | Subtotal: $${(item.price * item.qty).toLocaleString('es-AR')} ARS\n\n`;
-                total += item.price * item.qty;
-            });
-            message += `*TOTAL A ABONAR: $${total.toLocaleString('es-AR')} ARS*\n\nQuedo a la espera para coordinar el pago y envío. ¡Gracias!`;
-            
-            const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
-        });
-
-        // Inicializar
-        renderProducts();
-        updateCartBadge();
-        renderCartItems();
-    </script>
-</body>
-</html>
