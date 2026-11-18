@@ -231,27 +231,27 @@
         const WHATSAPP_NUMBER = "5493764296642";
 
         const products = [
-            // 1. Categoría Metallica (6 modelos a $21.000)
-            { id: 1, name: "Boardshort Billabong Metallica Camo Brown", price: 21000, category: "metallica", image: "metallica-marron.jpg", badge: "Metallica" },
-            { id: 2, name: "Boardshort Billabong Metallica Blue Grid", price: 21000, category: "metallica", image: "metallica-azul.webp", badge: "Metallica" },
-            { id: 3, name: "Boardshort Billabong Metallica", price: 21000, category: "metallica", image: "malla violeta.webp", badge: "Metallica" },
-            { id: 4, name: "Boardshort Billabong Metallica", price: 21000, category: "metallica", image: "malla taverniti.webp", badge: "Metallica" },
-            { id: 5, name: "Boardshort Billabong Metallica", price: 21000, category: "metallica", image: "hurley azul.webp", badge: "Metallica" },
-            { id: 6, name: "Boardshort Billabong Metallica", price: 21000, category: "metallica", image: "malla letras flow.webp", badge: "Metallica" },
+            // 1. Categoría Metallica (Disponibles a $21.000)
+            { id: 1, name: "Boardshort Billabong Metallica Camo Brown", price: 21000, available: true, category: "metallica", image: "metallica-marron.jpg", badge: "Metallica" },
+            { id: 2, name: "Boardshort Billabong Metallica Blue Grid", price: 21000, available: true, category: "metallica", image: "metallica-azul.webp", badge: "Metallica" },
+            { id: 3, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", image: "malla violeta.webp", badge: "Metallica" },
+            { id: 4, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", image: "malla taverniti.webp", badge: "Metallica" },
+            { id: 5, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", image: "hurley azul.webp", badge: "Metallica" },
+            { id: 6, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", image: "malla letras flow.webp", badge: "Metallica" },
 
-            // 2. Categoría Rayadas (3 modelos a $20.000)
-            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: , category: "rayadas", image: "rayada-negra.jpg", badge: "Rayadas" },
-            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: , category: "rayadas", image: "rayada-azul.jpg", badge: "Rayadas" },
-            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: , category: "rayadas", image: "rayada-roja.jpg", badge: "Rayadas" },
+            // 2. Categoría Rayadas (Próximamente - sin precio)
+            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", image: "rayada-negra.jpg", badge: "Rayadas" },
+            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", image: "rayada-azul.jpg", badge: "Rayadas" },
+            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", image: "rayada-roja.jpg", badge: "Rayadas" },
 
-            // 3. Categoría Clásica (3 modelos: 1 original + Hurley + Taverniti)
-            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: , category: "clasica", image: "malla-roja.jpg", badge: "Clásica" },
-            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: , category: "clasica", image: "hurley azul.webp", badge: "Clásica" },
-            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: , category: "clasica", image: "malla taverniti.webp", badge: "Clásica" },
+            // 3. Categoría Clásica (Próximamente - sin precio)
+            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", image: "malla-roja.jpg", badge: "Clásica" },
+            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", image: "hurley azul.webp", badge: "Clásica" },
+            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", image: "malla taverniti.webp", badge: "Clásica" },
 
-            // 4. Categoría Urbanos (2 modelos: MCD Violeta y Quiksilver Gothic)
-            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: , category: "urbanos", image: "malla violeta.webp", badge: "Urbanos" },
-            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: , category: "urbanos", image: "malla letras flow.webp", badge: "Urbanos" }
+            // 4. Categoría Urbanos (Próximamente - sin precio)
+            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", image: "malla violeta.webp", badge: "Urbanos" },
+            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", image: "malla letras flow.webp", badge: "Urbanos" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
@@ -270,9 +270,35 @@
 
                 const card = document.createElement('div');
                 card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-meraki-sand flex flex-col group';
+                
+                // Contenido condicional según disponibilidad
+                const priceHTML = p.available 
+                    ? `<div class="text-xl font-extrabold text-meraki-ocean mb-5">$${p.price.toLocaleString('es-AR')} ARS</div>`
+                    : `<div class="text-sm font-bold uppercase tracking-wider text-meraki-terracotta mb-5">Ingreso Próximo</div>`;
+
+                const actionHTML = p.available
+                    ? `
+                        <div class="mb-5">
+                            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Seleccionar Talle:</label>
+                            <select id="select-size-${p.id}" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2.5 text-sm font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
+                                ${sizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s}</option>`).join('')}
+                            </select>
+                        </div>
+                        <button id="add-btn-${p.id}" class="mt-auto w-full bg-meraki-dark text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-meraki-ocean transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span>Agregar al Pedido</span>
+                        </button>
+                    `
+                    : `
+                        <button disabled class="mt-auto w-full bg-meraki-sand text-gray-500 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2 cursor-not-allowed">
+                            <i class="fa-regular fa-clock text-sm"></i>
+                            <span>Próximamente</span>
+                        </button>
+                    `;
+
                 card.innerHTML = `
                     <div class="relative bg-gray-100 aspect-[4/5] overflow-hidden cursor-pointer img-zoom-trigger">
-                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x750/EFECE6/141414?text=Subir+${p.image}'">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${!p.available ? 'opacity-90' : ''}" onerror="this.src='https://placehold.co/600x750/EFECE6/141414?text=Subir+${p.image}'">
                         <span class="absolute top-3.5 left-3.5 bg-meraki-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">${p.badge}</span>
                         <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                             <span class="bg-white/90 text-meraki-dark text-xs font-bold px-3.5 py-2 rounded-full shadow-lg flex items-center space-x-1.5">
@@ -283,19 +309,8 @@
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="font-bold text-lg text-meraki-dark leading-snug mb-1.5">${p.name}</h3>
-                        <div class="text-xl font-extrabold text-meraki-ocean mb-5">$${p.price.toLocaleString('es-AR')} ARS</div>
-                        
-                        <div class="mb-5">
-                            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Seleccionar Talle:</label>
-                            <select id="select-size-${p.id}" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2.5 text-sm font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
-                                ${sizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s}</option>`).join('')}
-                            </select>
-                        </div>
-
-                        <button id="add-btn-${p.id}" class="mt-auto w-full bg-meraki-dark text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-meraki-ocean transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer">
-                            <i class="fa-solid fa-plus text-xs"></i>
-                            <span>Agregar al Pedido</span>
-                        </button>
+                        ${priceHTML}
+                        ${actionHTML}
                     </div>
                 `;
 
@@ -305,13 +320,15 @@
                     openModal(p.image, p.name);
                 });
 
-                card.querySelector(`#select-size-${p.id}`).addEventListener('change', (e) => {
-                    selectedSizes[p.id] = e.target.value;
-                });
+                if (p.available) {
+                    card.querySelector(`#select-size-${p.id}`).addEventListener('change', (e) => {
+                        selectedSizes[p.id] = e.target.value;
+                    });
 
-                card.querySelector(`#add-btn-${p.id}`).addEventListener('click', () => {
-                    handleAddToCart(p.id);
-                });
+                    card.querySelector(`#add-btn-${p.id}`).addEventListener('click', () => {
+                        handleAddToCart(p.id);
+                    });
+                }
             });
         }
 
@@ -337,6 +354,8 @@
 
         function handleAddToCart(productId) {
             const product = products.find(p => p.id === productId);
+            if (!product || !product.available) return;
+
             const size = selectedSizes[productId] || sizes[1];
             const cartItem = cart.find(item => item.id === productId && item.size === size);
 
