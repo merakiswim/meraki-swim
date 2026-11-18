@@ -226,18 +226,18 @@
         </div>
     </div>
 
-    <!-- Lógica de la Tienda con Soporte de Dos Imágenes (Frente y Reverso) -->
+    <!-- Lógica de la Tienda -->
     <script>
         const WHATSAPP_NUMBER = "5493764296642";
 
         const products = [
-            // 1. Categoría Metallica (Disponibles a $21.000 con par de fotos: [Frente, Reverso])
-            { id: 1, name: "Boardshort Billabong Metallica Camo Brown", price: 21000, available: true, category: "metallica", images: ["metallica-marron.jpg", "metallica-marron-reverso.jpg"], badge: "Metallica" },
-            { id: 2, name: "Boardshort Billabong Metallica Blue Grid", price: 21000, available: true, category: "metallica", images: ["metallica-azul.webp", "metallica-azul-reverso.webp"], badge: "Metallica" },
-            { id: 3, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", images: ["malla violeta.webp", "malla violeta-reverso.webp"], badge: "Metallica" },
-            { id: 4, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", images: ["malla taverniti.webp", "malla taverniti-reverso.webp"], badge: "Metallica" },
-            { id: 5, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", images: ["hurley azul.webp", "hurley azul-reverso.webp"], badge: "Metallica" },
-            { id: 6, name: "Boardshort Billabong Metallica", price: 21000, available: true, category: "metallica", images: ["malla letras flow.webp", "malla letras flow-reverso.webp"], badge: "Metallica" },
+            // 1. Categoría Metallica (6 modelos activos a $21.000 con sus respectivos pares de fotos Frente / Reverso)
+            { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 21000, available: true, category: "metallica", images: ["frente-talle34.jpeg", "black-camo.jpeg"], badge: "Metallica" },
+            { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 21000, available: true, category: "metallica", images: ["frente-talle34.jpeg", "electric-blue.jpeg"], badge: "Metallica" },
+            { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 21000, available: true, category: "metallica", images: ["frente-talle34.jpeg", "blood-red.jpeg"], badge: "Metallica" },
+            { id: 4, name: "Boardshort Billabong Metallica Tropical", price: 21000, available: true, category: "metallica", images: ["frente-tropical.jpeg", "tropical.jpeg"], badge: "Metallica" },
+            { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 21000, available: true, category: "metallica", images: ["frente-tropical-grey.jpeg", "tropical-grey.jpeg"], badge: "Metallica" },
+            { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 21000, available: true, category: "metallica", images: ["frente-carmesi.jpeg", "carmesi.jpeg"], badge: "Metallica" },
 
             // 2. Categoría Rayadas (Próximamente)
             { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-reverso.jpg"], badge: "Rayadas" },
@@ -257,7 +257,7 @@
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
         const sizes = ["38 (S)", "40 (M)", "42 (L)", "44 (XL)", "46 (XXL)"];
         let selectedSizes = {};
-        let currentImageIndexes = {}; // Guarda qué foto se está mostrando en cada tarjeta (0 = frente, 1 = reverso)
+        let currentImageIndexes = {};
 
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('products-grid');
@@ -268,7 +268,7 @@
 
             filtered.forEach(p => {
                 if(!selectedSizes[p.id]) selectedSizes[p.id] = sizes[1];
-                if(currentImageIndexes[p.id] === undefined) currentImageIndexes[p.id] = 0; // Inicia en la primera foto (frente)
+                if(currentImageIndexes[p.id] === undefined) currentImageIndexes[p.id] = 0;
 
                 const activeImgIndex = currentImageIndexes[p.id];
                 const currentImgSrc = p.images[activeImgIndex] || p.images[0];
@@ -302,12 +302,10 @@
 
                 card.innerHTML = `
                     <div class="relative bg-gray-100 aspect-[4/5] overflow-hidden group">
-                        <!-- Imagen interactiva -->
                         <img id="product-img-${p.id}" src="${currentImgSrc}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer img-zoom-trigger" onerror="this.src='https://placehold.co/600x750/EFECE6/141414?text=Subir+Foto'">
                         
                         <span class="absolute top-3.5 left-3.5 bg-meraki-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full pointer-events-none">${p.badge}</span>
                         
-                        <!-- Indicador / Botones de cambio de foto (Frente / Reverso) -->
                         <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full px-3 py-1 flex items-center space-x-2 z-10">
                             <button id="prev-img-${p.id}" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
                             <span class="text-white text-[11px] font-bold tracking-wider">${activeImgIndex === 0 ? 'FRENTE' : 'REVERSO'}</span>
@@ -323,7 +321,6 @@
 
                 grid.appendChild(card);
 
-                // Evento para cambiar de foto con las flechitas
                 card.querySelector(`#prev-img-${p.id}`).addEventListener('click', (e) => {
                     e.stopPropagation();
                     currentImageIndexes[p.id] = currentImageIndexes[p.id] === 0 ? 1 : 0;
@@ -336,7 +333,6 @@
                     renderProducts(filter);
                 });
 
-                // Zoom al hacer clic en la foto
                 card.querySelector('.img-zoom-trigger').addEventListener('click', () => {
                     openModal(currentImgSrc, p.name + (activeImgIndex === 0 ? ' (Frente)' : ' (Reverso)'));
                 });
@@ -353,7 +349,6 @@
             });
         }
 
-        // Funciones del Modal de Imagen
         function openModal(imgSrc, title) {
             const modal = document.getElementById('image-modal');
             const modalImg = document.getElementById('modal-img');
