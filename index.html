@@ -74,7 +74,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <span class="text-xs uppercase font-bold tracking-[0.3em] text-meraki-ocean bg-white border border-meraki-sand px-4 py-1.5 rounded-full inline-block mb-5 shadow-sm">Temporada Verano • Stock Disponible</span>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl mx-auto leading-[1.1]">Mallas de baño masculinas con diseño y actitud.</h1>
-            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-9">Tela de secado rápido, corte cómodo y estampas exclusivas. Tocá cualquier foto para verla en grande, pasá el frente y reverso, armá tu carrito y enviá tu pedido directo a nuestro WhatsApp.</p>
+            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-9">Tela de secado rápido, corte cómodo y estampas exclusivas. Tocá cualquier foto para verla en grande, alterná entre el dorso y el frente, armá tu carrito y enviá tu pedido directo a nuestro WhatsApp.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#catalogo" class="w-full sm:w-auto bg-meraki-dark text-white px-8 py-4 rounded-full font-semibold tracking-wide hover:bg-meraki-ocean transition-all shadow-lg inline-flex items-center justify-center space-x-2">
                     <span>Explorar Modelos</span>
@@ -93,7 +93,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
                 <h2 class="text-3xl font-extrabold tracking-tight mb-2">Colección Oficial</h2>
-                <p class="text-gray-500 text-sm">Navegá entre el frente y reverso de cada malla, elegí tu talle y finalizá tu compra.</p>
+                <p class="text-gray-500 text-sm">Navegá entre el dorso y el frente de cada malla, elegí tu talle y finalizá tu compra.</p>
             </div>
             
             <!-- Filtros de categoría -->
@@ -231,27 +231,27 @@
         const WHATSAPP_NUMBER = "5493764296642";
 
         const products = [
-            // 1. Categoría Metallica (6 modelos activos a $21.000 con sus respectivos pares de fotos Frente / Reverso)
-            { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 21000, available: true, category: "metallica", images: ["frente-talle34.jpeg", "black-camo.jpeg"], badge: "Metallica" },
-            { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 21000, available: true, category: "metallica", images: ["frente-talle34.jpeg", "electric-blue.jpeg"], badge: "Metallica" },
-            { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 21000, available: true, category: "metallica", images: ["frente-talle34.jpeg", "blood-red.jpeg"], badge: "Metallica" },
-            { id: 4, name: "Boardshort Billabong Metallica Tropical", price: 21000, available: true, category: "metallica", images: ["frente-tropical.jpeg", "tropical.jpeg"], badge: "Metallica" },
-            { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 21000, available: true, category: "metallica", images: ["frente-tropical-grey.jpeg", "tropical-grey.jpeg"], badge: "Metallica" },
-            { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 21000, available: true, category: "metallica", images: ["frente-carmesi.jpeg", "carmesi.jpeg"], badge: "Metallica" },
+            // 1. Categoría Metallica (Orden invertido: [Dorso, Frente] para que arranquen mostrando el dorso)
+            { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 21000, available: true, category: "metallica", images: ["black-camo.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
+            { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 21000, available: true, category: "metallica", images: ["electric-blue.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
+            { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 21000, available: true, category: "metallica", images: ["blood-red.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
+            { id: 4, name: "Boardshort Billabong Metallica Tropical", price: 21000, available: true, category: "metallica", images: ["tropical.jpeg", "frente-tropical.jpeg"], badge: "Metallica" },
+            { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 21000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
+            { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 21000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
 
             // 2. Categoría Rayadas (Próximamente)
-            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-reverso.jpg"], badge: "Rayadas" },
-            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul.jpg", "rayada-azul-reverso.jpg"], badge: "Rayadas" },
-            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja.jpg", "rayada-roja-reverso.jpg"], badge: "Rayadas" },
+            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra-reverso.jpg", "rayada-negra.jpg"], badge: "Rayadas" },
+            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul-reverso.jpg", "rayada-azul.jpg"], badge: "Rayadas" },
+            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja-reverso.jpg", "rayada-roja.jpg"], badge: "Rayadas" },
 
             // 3. Categoría Clásica (Próximamente)
-            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja.jpg", "malla-roja-reverso.jpg"], badge: "Clásica" },
-            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul.webp", "hurley azul-reverso.webp"], badge: "Clásica" },
-            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti.webp", "malla taverniti-reverso.webp"], badge: "Clásica" },
+            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja-reverso.jpg", "malla-roja.jpg"], badge: "Clásica" },
+            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul-reverso.webp", "hurley azul.webp"], badge: "Clásica" },
+            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti-reverso.webp", "malla taverniti.webp"], badge: "Clásica" },
 
             // 4. Categoría Urbanos (Próximamente)
-            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["malla violeta.webp", "malla violeta-reverso.webp"], badge: "Urbanos" },
-            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["malla letras flow.webp", "malla letras flow-reverso.webp"], badge: "Urbanos" }
+            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["malla violeta-reverso.webp", "malla violeta.webp"], badge: "Urbanos" },
+            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["malla letras flow-reverso.webp", "malla letras flow.webp"], badge: "Urbanos" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
@@ -308,7 +308,7 @@
                         
                         <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full px-3 py-1 flex items-center space-x-2 z-10">
                             <button id="prev-img-${p.id}" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
-                            <span class="text-white text-[11px] font-bold tracking-wider">${activeImgIndex === 0 ? 'FRENTE' : 'REVERSO'}</span>
+                            <span class="text-white text-[11px] font-bold tracking-wider">${activeImgIndex === 0 ? 'DORSO' : 'FRENTE'}</span>
                             <button id="next-img-${p.id}" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
@@ -334,7 +334,7 @@
                 });
 
                 card.querySelector('.img-zoom-trigger').addEventListener('click', () => {
-                    openModal(currentImgSrc, p.name + (activeImgIndex === 0 ? ' (Frente)' : ' (Reverso)'));
+                    openModal(currentImgSrc, p.name + (activeImgIndex === 0 ? ' (Dorso)' : ' (Frente)'));
                 });
 
                 if (p.available) {
