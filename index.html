@@ -257,7 +257,7 @@
         const FREE_SHIPPING_LIMIT = 90000;
 
         const products = [
-            // 1. Categoría Metallica (Arrancan con DORSO [index 0] y luego FRENTE [index 1])
+            // 1. Categoría Metallica ($22.000, activas con carrito y orden Dorso -> Frente)
             { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 22000, available: true, category: "metallica", images: ["black-camo.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
             { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 22000, available: true, category: "metallica", images: ["electric-blue.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
             { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 22000, available: true, category: "metallica", images: ["blood-red.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
@@ -265,23 +265,23 @@
             { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 22000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
             { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 22000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
 
-            // 2. Categoría Rayadas (Próximamente)
-            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-reverso.jpg"], badge: "Rayadas" },
-            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul.jpg", "rayada-azul-reverso.jpg"], badge: "Rayadas" },
-            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja.jpg", "rayada-roja-reverso.jpg"], badge: "Rayadas" },
+            // 2. Categoría Rayadas (Próximamente, con los nombres exactos de tus nuevas imágenes de dorso)
+            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra-dorso.jpeg", "rayada-negra.jpg"], badge: "Rayadas" },
+            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul-dorso.jpeg", "rayada-azul.jpg"], badge: "Rayadas" },
+            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja-dorso.jpeg", "rayada-roja.jpg"], badge: "Rayadas" },
 
             // 3. Categoría Clásica (Próximamente)
-            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja.jpg", "malla-roja-reverso.jpg"], badge: "Clásica" },
-            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul.webp", "hurley azul-reverso.webp"], badge: "Clásica" },
-            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti.webp", "malla taverniti-reverso.webp"], badge: "Clásica" },
+            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja-reverso.jpg", "malla-roja.jpg"], badge: "Clásica" },
+            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul-reverso.webp", "hurley azul.webp"], badge: "Clásica" },
+            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti-reverso.webp", "malla taverniti.webp"], badge: "Clásica" },
 
             // 4. Categoría Urbanos (Próximamente)
-            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["malla violeta.webp", "malla violeta-reverso.webp"], badge: "Urbanos" },
-            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["malla letras flow.webp", "malla letras flow-reverso.webp"], badge: "Urbanos" }
+            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["malla violeta-reverso.webp", "malla violeta.webp"], badge: "Urbanos" },
+            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["malla letras flow-reverso.webp", "malla letras flow.webp"], badge: "Urbanos" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
-        let appliedDiscount = parseFloat(localStorage.getItem('meraki_discount')) || 0; // 0 o 0.15
+        let appliedDiscount = parseFloat(localStorage.getItem('meraki_discount')) || 0;
         let appliedCouponCode = localStorage.getItem('meraki_coupon') || "";
         const sizes = ["38 (S)", "40 (M)", "42 (L)", "44 (XL)", "46 (XXL)"];
         let selectedSizes = {};
@@ -302,7 +302,7 @@
                 const currentImgSrc = p.images[activeImgIndex] || p.images[0];
 
                 let labelText = "";
-                if (p.category === 'metallica') {
+                if (p.category === 'metallica' || p.category === 'rayadas') {
                     labelText = (activeImgIndex === 0) ? 'DORSO' : 'FRENTE';
                 } else {
                     labelText = (activeImgIndex === 0) ? 'FRENTE' : 'DORSO';
@@ -514,7 +514,6 @@
 
             if(totalEl) totalEl.innerText = `$${total.toLocaleString('es-AR')} ARS`;
 
-            // Dinámica del cartel de envío gratis en el carrito (calculado sobre el total final con descuento)
             if (shippingText && shippingAlert) {
                 if (total >= FREE_SHIPPING_LIMIT) {
                     shippingText.innerHTML = '🎉 <strong class="text-meraki-dark">¡Felicidades! Tenés ENVÍO GRATIS.</strong>';
@@ -527,13 +526,12 @@
             }
         }
 
-        // Lógica para aplicar el cupón de descuento
         document.getElementById('apply-coupon').addEventListener('click', () => {
             const codeInput = document.getElementById('coupon-input').value.trim().toUpperCase();
             const couponMsg = document.getElementById('coupon-msg');
 
             if (codeInput === "MERAKI15") {
-                appliedDiscount = 0.15; // 15%
+                appliedDiscount = 0.15;
                 appliedCouponCode = codeInput;
                 localStorage.setItem('meraki_discount', appliedDiscount);
                 localStorage.setItem('meraki_coupon', appliedCouponCode);
