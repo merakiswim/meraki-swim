@@ -30,9 +30,10 @@
 </head>
 <body class="bg-meraki-bg text-meraki-dark font-sans antialiased selection:bg-meraki-ocean selection:text-white">
 
-    <!-- Top Bar Promocional -->
-    <div class="bg-meraki-dark text-meraki-sand text-xs tracking-widest py-2.5 text-center uppercase font-medium px-4">
-        Envíos a todo el país • Atención personalizada por WhatsApp • Venta minorista y mayorista
+    <!-- Top Bar Promocional con Envío Gratis -->
+    <div class="bg-meraki-dark text-meraki-sand text-xs tracking-widest py-2.5 text-center uppercase font-medium px-4 flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-truck-fast text-meraki-terracotta"></i>
+        <span>¡Envío GRATIS a todo el país desde $90.000! • Venta minorista y mayorista</span>
     </div>
 
     <!-- Header / Navbar -->
@@ -72,9 +73,9 @@
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-b from-meraki-sand/70 to-meraki-bg py-16 md:py-24 border-b border-meraki-sand">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-xs uppercase font-bold tracking-[0.3em] text-meraki-ocean bg-white border border-meraki-sand px-4 py-1.5 rounded-full inline-block mb-5 shadow-sm">Temporada Verano • Stock Disponible</span>
+            <span class="text-xs uppercase font-bold tracking-[0.3em] text-meraki-ocean bg-white border border-meraki-sand px-4 py-1.5 rounded-full inline-block mb-5 shadow-sm">Envío Gratis desde $90.000 • Stock Disponible</span>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-3xl mx-auto leading-[1.1]">Mallas de baño masculinas con diseño y actitud.</h1>
-            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-9">Tela de secado rápido, corte cómodo y estampas exclusivas. Tocá cualquier foto para verla en grande, alterná fotos, armá tu carrito y enviá tu pedido directo a nuestro WhatsApp.</p>
+            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-9">Tela de secado rápido, corte cómodo y estampas exclusivas. Tocá cualquier foto para verla en grande, armá tu carrito y enviá tu pedido directo a nuestro WhatsApp.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#catalogo" class="w-full sm:w-auto bg-meraki-dark text-white px-8 py-4 rounded-full font-semibold tracking-wide hover:bg-meraki-ocean transition-all shadow-lg inline-flex items-center justify-center space-x-2">
                     <span>Explorar Modelos</span>
@@ -93,7 +94,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
                 <h2 class="text-3xl font-extrabold tracking-tight mb-2">Colección Oficial</h2>
-                <p class="text-gray-500 text-sm">Navegá entre las fotos de cada malla, elegí tu talle y finalizá tu compra.</p>
+                <p class="text-gray-500 text-sm">Navegá entre el dorso y el frente de cada malla, elegí tu talle y finalizá tu compra.</p>
             </div>
             
             <!-- Filtros de categoría -->
@@ -207,6 +208,12 @@
                     <button id="close-cart" class="text-gray-400 hover:text-meraki-dark text-xl p-1 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 
+                <!-- Aviso de Envío Gratis en Carrito -->
+                <div id="shipping-alert" class="bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark flex items-center space-x-2">
+                    <i class="fa-solid fa-truck-fast text-meraki-ocean text-base"></i>
+                    <span id="shipping-text">¡Agregá más productos para calificar al envío gratis!</span>
+                </div>
+
                 <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
                     <!-- Items dinámicos -->
                 </div>
@@ -229,15 +236,16 @@
     <!-- Lógica de la Tienda -->
     <script>
         const WHATSAPP_NUMBER = "5493764296642";
+        const FREE_SHIPPING_LIMIT = 90000;
 
         const products = [
             // 1. Categoría Metallica (Arrancan con DORSO [index 0] y luego FRENTE [index 1])
-            { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 22000, available: true, category: "metallica", images: ["black-camo.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
-            { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 22000, available: true, category: "metallica", images: ["electric-blue.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
-            { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 22000, available: true, category: "metallica", images: ["blood-red.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
-            { id: 4, name: "Boardshort Billabong Metallica Tropical", price: 22000, available: true, category: "metallica", images: ["tropical.jpeg", "frente-tropical.jpeg"], badge: "Metallica" },
-            { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 22000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
-            { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 22000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
+            { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 21000, available: true, category: "metallica", images: ["black-camo.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
+            { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 21000, available: true, category: "metallica", images: ["electric-blue.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
+            { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 21000, available: true, category: "metallica", images: ["blood-red.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
+            { id: 4, name: "Boardshort Billabong Metallica Tropical", price: 21000, available: true, category: "metallica", images: ["tropical.jpeg", "frente-tropical.jpeg"], badge: "Metallica" },
+            { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 21000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
+            { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 21000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
 
             // 2. Categoría Rayadas (Arrancan con FRENTE [index 0] y luego DORSO [index 1])
             { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-reverso.jpg"], badge: "Rayadas" },
@@ -273,7 +281,6 @@
                 const activeImgIndex = currentImageIndexes[p.id];
                 const currentImgSrc = p.images[activeImgIndex] || p.images[0];
 
-                // Detectar etiquetas según categoría y posición
                 let labelText = "";
                 if (p.category === 'metallica') {
                     labelText = (activeImgIndex === 0) ? 'DORSO' : 'FRENTE';
@@ -416,6 +423,8 @@
         function renderCartItems() {
             const container = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
+            const shippingText = document.getElementById('shipping-text');
+            const shippingAlert = document.getElementById('shipping-alert');
             if (!container) return;
             container.innerHTML = '';
 
@@ -426,6 +435,7 @@
                         <p class="text-gray-500 text-sm font-medium">Todavía no agregaste mallas a tu pedido.</p>
                     </div>`;
                 if(totalEl) totalEl.innerText = '$0 ARS';
+                if(shippingText) shippingText.innerText = '¡Envío GRATIS a todo el país desde $90.000!';
                 return;
             }
 
@@ -453,6 +463,18 @@
             });
 
             if(totalEl) totalEl.innerText = `$${total.toLocaleString('es-AR')} ARS`;
+
+            // Dinámica del cartel de envío gratis en el carrito
+            if (shippingText && shippingAlert) {
+                if (total >= FREE_SHIPPING_LIMIT) {
+                    shippingText.innerHTML = '🎉 <strong class="text-merak-dark">¡Felicidades! Tenés ENVÍO GRATIS.</strong>';
+                    shippingAlert.className = "bg-green-50 px-6 py-3 border-b border-green-200 text-xs font-semibold text-green-800 flex items-center space-x-2";
+                } else {
+                    const falta = FREE_SHIPPING_LIMIT - total;
+                    shippingText.innerHTML = `Agregá <strong>$${falta.toLocaleString('es-AR')} ARS</strong> más para obtener <strong>ENVÍO GRATIS</strong>.`;
+                    shippingAlert.className = "bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark flex items-center space-x-2";
+                }
+            }
         }
 
         function openCart() {
@@ -490,6 +512,11 @@
                 message += `▪️ *${item.name}*\n   Talle: ${item.size} | Cantidad: ${item.qty} | Subtotal: $${(item.price * item.qty).toLocaleString('es-AR')} ARS\n\n`;
                 total += item.price * item.qty;
             });
+            
+            if (total >= FREE_SHIPPING_LIMIT) {
+                message += `🚚 *¡ENVÍO GRATIS APLICADO!*\n`;
+            }
+            
             message += `*TOTAL A ABONAR: $${total.toLocaleString('es-AR')} ARS*\n\nQuedo a la espera para coordinar el pago y envío. ¡Gracias!`;
             
             const encoded = encodeURIComponent(message);
