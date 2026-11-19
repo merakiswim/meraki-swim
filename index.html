@@ -276,38 +276,118 @@
             "GIANLU15": 0.15
         };
 
+        // Stock disponible por modelo y talle surfer
         const products = [
-            { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 22000, available: true, category: "metallica", images: ["black-camo.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
-            { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 22000, available: true, category: "metallica", images: ["electric-blue.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
-            { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 22000, available: true, category: "metallica", images: ["blood-red.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
-            { id: 4, name: "Boardshort Billabong Metallica Tropical", price: 22000, available: true, category: "metallica", images: ["tropical.jpeg", "frente-tropical.jpeg"], badge: "Metallica" },
-            { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 22000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
-            { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 22000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
+            {
+                id: 1,
+                name: "Boardshort Billabong Metallica Black Camo",
+                price: 22000,
+                category: "metallica",
+                images: ["black-camo.jpeg", "frente-talle34.jpeg"],
+                badge: "Metallica",
+                stockBySize: { "Talle 34": 10 }
+            },
+            {
+                id: 2,
+                name: "Boardshort Billabong Metallica Electric Blue",
+                price: 22000,
+                category: "metallica",
+                images: ["electric-blue.jpeg", "frente-talle34.jpeg"],
+                badge: "Metallica",
+                stockBySize: { "Talle 34": 11 }
+            },
+            {
+                id: 3,
+                name: "Boardshort Billabong Metallica Blood Red",
+                price: 22000,
+                category: "metallica",
+                images: ["blood-red.jpeg", "frente-talle34.jpeg"],
+                badge: "Metallica",
+                stockBySize: { "Talle 34": 3 }
+            },
+            {
+                id: 4,
+                name: "Boardshort Billabong Metallica Tropical",
+                price: 22000,
+                category: "metallica",
+                images: ["tropical.jpeg", "frente-tropical.jpeg"],
+                badge: "Metallica",
+                stockBySize: { "Talle 30": 8, "Talle 38": 7, "Talle 40": 6 }
+            },
+            {
+                id: 5,
+                name: "Boardshort Billabong Metallica Tropical Grey",
+                price: 22000,
+                category: "metallica",
+                images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"],
+                badge: "Metallica",
+                stockBySize: { "Talle 40": 1 }
+            },
+            {
+                id: 6,
+                name: "Boardshort Billabong Metallica Carmesí",
+                price: 22000,
+                category: "metallica",
+                images: ["carmesi.jpeg", "frente-carmesi.jpeg"],
+                badge: "Metallica",
+                stockBySize: { "Talle 32": 2 }
+            },
 
             // Categoría Rayadas: Frente primero, luego Dorso
-            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-dorso.jpeg"], badge: "Rayadas" },
-            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul.jpg", "rayada-azul-dorso.jpeg"], badge: "Rayadas" },
-            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja.jpg", "rayada-roja-dorso.jpeg"], badge: "Rayadas" },
+            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-dorso.jpeg"], badge: "Rayadas", stockBySize: {} },
+            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, category: "rayadas", images: ["rayada-azul.jpg", "rayada-azul-dorso.jpeg"], badge: "Rayadas", stockBySize: {} },
+            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, category: "rayadas", images: ["rayada-roja.jpg", "rayada-roja-dorso.jpeg"], badge: "Rayadas", stockBySize: {} },
 
             // Categoría Clásica: Frente primero, luego Dorso
-            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja.jpg", "dorso-roja.jpeg"], badge: "Clásica" },
-            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["frente-hurley.jpeg", "hurley azul-reverso.webp"], badge: "Clásica" },
-            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti.webp", "dorso-taverniti.jpeg"], badge: "Clásica" },
+            { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, category: "clasica", images: ["malla-roja.jpg", "dorso-roja.jpeg"], badge: "Clásica", stockBySize: {} },
+            { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, category: "clasica", images: ["frente-hurley.jpeg", "hurley azul-reverso.webp"], badge: "Clásica", stockBySize: {} },
+            { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti.webp", "dorso-taverniti.jpeg"], badge: "Clásica", stockBySize: {} },
 
             // Categoría Urbanos: Frente primero, luego Dorso
-            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["frente-violeta.jpeg", "dorso-violeta.jpeg"], badge: "Urbanos" },
-            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["frente-quicksilver.jpeg", "dorso-quicksilver.jpeg"], badge: "Urbanos" }
+            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, category: "urbanos", images: ["frente-violeta.jpeg", "dorso-violeta.jpeg"], badge: "Urbanos", stockBySize: {} },
+            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, category: "urbanos", images: ["frente-quicksilver.jpeg", "dorso-quicksilver.jpeg"], badge: "Urbanos", stockBySize: {} }
         ];
 
+        function getAvailableSizes(product) {
+            if (!product || !product.stockBySize) return [];
+            return Object.entries(product.stockBySize)
+                .filter(([, qty]) => qty > 0)
+                .map(([size]) => size);
+        }
+
+        function isProductAvailable(product) {
+            return Boolean(product && product.price && getAvailableSizes(product).length > 0);
+        }
+
+        function getSizeStock(productId, size) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.stockBySize) return 0;
+            return product.stockBySize[size] || 0;
+        }
+
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
+        // Limpiar ítems guardados sin stock o que superen el stock actual
+        cart = cart.reduce((acc, item) => {
+            const maxStock = getSizeStock(item.id, item.size);
+            const product = products.find(p => p.id === item.id);
+            if (product && isProductAvailable(product) && maxStock > 0) {
+                acc.push({
+                    ...item,
+                    name: product.name,
+                    price: product.price,
+                    qty: Math.min(item.qty, maxStock)
+                });
+            }
+            return acc;
+        }, []);
+        localStorage.setItem('meraki_cart', JSON.stringify(cart));
+
         let savedCoupon = localStorage.getItem('meraki_coupon') || "";
         let appliedCouponCode = Object.prototype.hasOwnProperty.call(COUPONS, savedCoupon) ? savedCoupon : "";
         let appliedDiscount = appliedCouponCode ? COUPONS[appliedCouponCode] : 0;
         let deliveryMethod = localStorage.getItem('meraki_delivery') || "Envío a domicilio";
         let couponErrorMessage = "";
 
-        // Talles surfer del 30 al 40
-        const sizes = ["Talle 30", "Talle 32", "Talle 34", "Talle 36", "Talle 38", "Talle 40"];
         let selectedSizes = {};
         let currentImageIndexes = {};
 
@@ -319,7 +399,12 @@
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
 
             filtered.forEach(p => {
-                if (!selectedSizes[p.id]) selectedSizes[p.id] = sizes[1];
+                const availableSizes = getAvailableSizes(p);
+                const hasStock = isProductAvailable(p);
+
+                if (hasStock && !availableSizes.includes(selectedSizes[p.id])) {
+                    selectedSizes[p.id] = availableSizes[0];
+                }
                 if (currentImageIndexes[p.id] === undefined) currentImageIndexes[p.id] = 0;
 
                 const activeImgIndex = currentImageIndexes[p.id];
@@ -332,16 +417,16 @@
                 const card = document.createElement('div');
                 card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-meraki-sand flex flex-col group';
                 
-                const priceHTML = p.available 
+                const priceHTML = hasStock 
                     ? `<div class="text-xl font-extrabold text-meraki-ocean mb-5">$${p.price.toLocaleString('es-AR')} ARS</div>`
                     : `<div class="text-sm font-bold uppercase tracking-wider text-meraki-terracotta mb-5">Ingreso Próximo</div>`;
 
-                const actionHTML = p.available
+                const actionHTML = hasStock
                     ? `
                         <div class="mb-5">
-                            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Seleccionar Talle Surfer:</label>
+                            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Talles Disponibles:</label>
                             <select id="select-size-${p.id}" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2.5 text-sm font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
-                                ${sizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s}</option>`).join('')}
+                                ${availableSizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s} (${p.stockBySize[s]} disp.)</option>`).join('')}
                             </select>
                         </div>
                         <button id="add-btn-${p.id}" type="button" class="mt-auto w-full bg-meraki-dark text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-meraki-ocean transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer">
@@ -390,7 +475,7 @@
                     openModal(currentImgSrc, `${p.name} (${labelText})`);
                 });
 
-                if (p.available) {
+                if (hasStock) {
                     card.querySelector(`#select-size-${p.id}`).addEventListener('change', (e) => {
                         selectedSizes[p.id] = e.target.value;
                     });
@@ -423,13 +508,23 @@
 
         function handleAddToCart(productId, imgSrc) {
             const product = products.find(p => p.id === productId);
-            if (!product || !product.available) return;
+            if (!product || !isProductAvailable(product)) return;
 
-            const size = selectedSizes[productId] || sizes[1];
+            const availableSizes = getAvailableSizes(product);
+            const size = availableSizes.includes(selectedSizes[productId])
+                ? selectedSizes[productId]
+                : availableSizes[0];
+            const maxStock = getSizeStock(productId, size);
+            if (maxStock <= 0) return;
+
             const cartItem = cart.find(item => item.id === productId && item.size === size);
 
             if (cartItem) {
-                cartItem.qty += 1;
+                if (cartItem.qty < maxStock) {
+                    cartItem.qty += 1;
+                } else {
+                    alert(`Solo hay ${maxStock} ${maxStock === 1 ? 'unidad disponible' : 'unidades disponibles'} de ${product.name} en ${size}.`);
+                }
             } else {
                 cart.push({ ...product, size, qty: 1, selectedImage: imgSrc });
             }
@@ -439,8 +534,19 @@
         }
 
         function updateQty(index, delta) {
-            cart[index].qty += delta;
-            if (cart[index].qty <= 0) {
+            const item = cart[index];
+            if (!item) return;
+
+            if (delta > 0) {
+                const maxStock = getSizeStock(item.id, item.size);
+                if (item.qty >= maxStock) {
+                    alert(`Alcanzaste el stock máximo disponible (${maxStock}) para ${item.size}.`);
+                    return;
+                }
+            }
+
+            item.qty += delta;
+            if (item.qty <= 0) {
                 cart.splice(index, 1);
             }
             saveCart();
@@ -513,18 +619,21 @@
             let subtotal = 0;
             cart.forEach((item, index) => {
                 subtotal += item.price * item.qty;
+                const maxStock = getSizeStock(item.id, item.size);
+                const plusDisabled = item.qty >= maxStock;
+
                 const div = document.createElement('div');
                 div.className = 'flex items-center justify-between bg-meraki-bg p-4 rounded-xl border border-meraki-sand gap-3';
                 div.innerHTML = `
                     <div class="flex-1">
                         <h4 class="font-bold text-sm text-meraki-dark leading-tight">${item.name}</h4>
-                        <p class="text-xs text-gray-500 mt-1">Talle: <span class="font-semibold text-meraki-dark">${item.size}</span></p>
+                        <p class="text-xs text-gray-500 mt-1">Talle: <span class="font-semibold text-meraki-dark">${item.size}</span> <span class="text-[11px] text-gray-400">(máx. ${maxStock})</span></p>
                         <p class="text-sm font-extrabold text-meraki-ocean mt-1">$${(item.price * item.qty).toLocaleString('es-AR')} ARS</p>
                     </div>
                     <div class="flex items-center space-x-2 bg-white border border-meraki-sand rounded-lg px-2 py-1">
                         <button id="minus-${index}" type="button" aria-label="Restar unidad" class="text-gray-500 hover:text-meraki-dark px-1.5 font-bold cursor-pointer">-</button>
                         <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
-                        <button id="plus-${index}" type="button" aria-label="Sumar unidad" class="text-gray-500 hover:text-meraki-dark px-1.5 font-bold cursor-pointer">+</button>
+                        <button id="plus-${index}" type="button" aria-label="Sumar unidad" ${plusDisabled ? 'disabled' : ''} class="${plusDisabled ? 'text-gray-300 cursor-not-allowed' : 'text-gray-500 hover:text-meraki-dark cursor-pointer'} px-1.5 font-bold">+</button>
                     </div>
                 `;
                 container.appendChild(div);
