@@ -231,7 +231,7 @@
                 <div class="px-6 py-3 bg-meraki-sand/30 border-t border-meraki-sand">
                     <label for="coupon-input" class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1.5">¿Tenés un código de descuento?</label>
                     <div class="flex space-x-2">
-                        <input type="text" id="coupon-input" placeholder="Ej: FRANCO15" class="flex-1 bg-white border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-meraki-dark focus:outline-none focus:border-meraki-ocean">
+                        <input type="text" id="coupon-input" placeholder="Ingresá tu código" class="flex-1 bg-white border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-meraki-dark focus:outline-none focus:border-meraki-ocean">
                         <button id="apply-coupon" type="button" class="bg-meraki-dark hover:bg-meraki-ocean text-white px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-colors cursor-pointer">Aplicar</button>
                     </div>
                     <div id="coupon-status" class="mt-1.5 flex items-center justify-between hidden">
@@ -283,9 +283,10 @@
             { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 22000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
             { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 22000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
 
-            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra-dorso.jpeg", "rayada-negra.jpg"], badge: "Rayadas" },
-            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul-dorso.jpeg", "rayada-azul.jpg"], badge: "Rayadas" },
-            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja-dorso.jpeg", "rayada-roja.jpg"], badge: "Rayadas" },
+            // Categoría Rayadas: Frente primero, luego Dorso
+            { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra.jpg", "rayada-negra-dorso.jpeg"], badge: "Rayadas" },
+            { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul.jpg", "rayada-azul-dorso.jpeg"], badge: "Rayadas" },
+            { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja.jpg", "rayada-roja-dorso.jpeg"], badge: "Rayadas" },
 
             { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja-reverso.jpg", "malla-roja.jpg"], badge: "Clásica" },
             { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul-reverso.webp", "hurley azul.webp"], badge: "Clásica" },
@@ -320,7 +321,7 @@
                 const activeImgIndex = currentImageIndexes[p.id];
                 const currentImgSrc = p.images[activeImgIndex] || p.images[0];
 
-                const labelText = (p.category === 'metallica' || p.category === 'rayadas')
+                const labelText = (p.category === 'metallica')
                     ? (activeImgIndex === 0 ? 'DORSO' : 'FRENTE')
                     : (activeImgIndex === 0 ? 'FRENTE' : 'DORSO');
 
