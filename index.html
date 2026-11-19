@@ -202,50 +202,46 @@
         </div>
     </div>
 
-    <!-- Carrito Lateral (Drawer) Responsive sin Desborde -->
+    <!-- Carrito Chico y Liviano -->
     <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
-        <div id="cart-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
-        <div class="fixed inset-y-0 right-0 flex max-w-full w-full sm:w-auto justify-end pl-6 sm:pl-10 pointer-events-none">
-            <div class="w-full max-w-md bg-white shadow-2xl flex flex-col h-full min-w-0 overflow-x-hidden pointer-events-auto">
+        <div id="cart-backdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+        <div class="fixed inset-0 flex items-end sm:items-center justify-end p-2.5 sm:p-4 pointer-events-none">
+            <div class="w-full max-w-[330px] sm:max-w-xs bg-white rounded-2xl shadow-2xl flex flex-col max-h-[70vh] sm:max-h-[68vh] min-w-0 overflow-hidden pointer-events-auto border border-meraki-sand">
                 <!-- Cabecera -->
-                <div class="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-meraki-sand shrink-0 min-w-0">
-                    <div class="flex items-center space-x-2 min-w-0">
-                        <i class="fa-solid fa-bag-shopping text-meraki-ocean shrink-0"></i>
-                        <h3 class="font-extrabold text-base text-meraki-dark truncate">Tu Pedido</h3>
+                <div class="flex items-center justify-between px-3.5 py-2.5 border-b border-meraki-sand shrink-0 min-w-0">
+                    <div class="flex items-center space-x-1.5 min-w-0">
+                        <i class="fa-solid fa-bag-shopping text-meraki-ocean text-xs shrink-0"></i>
+                        <h3 class="font-extrabold text-xs text-meraki-dark truncate">Tu Pedido</h3>
                     </div>
-                    <button id="close-cart" type="button" aria-label="Cerrar pedido" class="text-gray-400 hover:text-meraki-dark text-lg p-1 cursor-pointer shrink-0"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="close-cart" type="button" aria-label="Cerrar pedido" class="text-gray-400 hover:text-meraki-dark text-sm p-1 cursor-pointer shrink-0"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 
-                <!-- Barra Compacta de Envío Gratis -->
-                <div id="shipping-alert" class="bg-meraki-sand/70 px-4 sm:px-5 py-2 border-b border-meraki-sand text-[11px] font-semibold text-meraki-dark space-y-1.5 transition-colors shrink-0 min-w-0">
+                <!-- Barra de Envío Gratis -->
+                <div id="shipping-alert" class="bg-meraki-sand/70 px-3.5 py-1.5 border-b border-meraki-sand text-[10px] font-semibold text-meraki-dark space-y-1 transition-colors shrink-0 min-w-0">
                     <div class="flex items-center space-x-1.5 min-w-0">
-                        <i class="fa-solid fa-truck-fast text-meraki-ocean text-xs shrink-0"></i>
-                        <span id="shipping-text" class="leading-snug">¡Envío GRATIS a todo el país desde $90.000!</span>
+                        <i class="fa-solid fa-truck-fast text-meraki-ocean text-[11px] shrink-0"></i>
+                        <span id="shipping-text" class="leading-tight">¡Envío GRATIS a todo el país desde $90.000!</span>
                     </div>
-                    <div class="w-full bg-white/80 rounded-full h-1.5 overflow-hidden border border-meraki-sand/80">
+                    <div class="w-full bg-white/80 rounded-full h-1 overflow-hidden border border-meraki-sand/80">
                         <div id="shipping-progress-bar" class="bg-meraki-ocean h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
                     </div>
                 </div>
 
-                <!-- Lista de Productos con Prioridad de Espacio -->
-                <div id="cart-items" class="flex-1 min-h-[170px] overflow-y-auto overflow-x-hidden px-4 sm:px-5 py-3 space-y-2.5 min-w-0">
+                <!-- Lista de Productos -->
+                <div id="cart-items" class="flex-1 min-h-[90px] overflow-y-auto overflow-x-hidden px-3.5 py-2 space-y-1.5 min-w-0">
                     <!-- Items dinámicos -->
                 </div>
 
-                <!-- Controles Compactos (Entrega, Datos y Cupón) -->
-                <div class="px-4 sm:px-5 py-2.5 bg-white border-t border-meraki-sand space-y-2 shrink-0 min-w-0">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 min-w-0">
-                        <select id="delivery-method" aria-label="Modalidad de entrega" class="w-full min-w-0 bg-meraki-bg border border-meraki-sand rounded-lg px-2.5 py-1.5 text-[11px] font-bold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
-                            <option value="Envío a domicilio">Envío a domicilio</option>
-                            <option value="Retiro a coordinar">Retiro a coordinar</option>
-                        </select>
-                        <input type="text" id="customer-name" placeholder="Tu nombre" aria-label="Tu nombre" class="w-full min-w-0 bg-meraki-bg border border-meraki-sand rounded-lg px-2.5 py-1.5 text-[11px] font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean">
-                    </div>
-                    <input type="text" id="shipping-location" placeholder="Ciudad / Dirección o retiro" aria-label="Ciudad o dirección" class="w-full min-w-0 bg-meraki-bg border border-meraki-sand rounded-lg px-2.5 py-1.5 text-[11px] font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean">
+                <!-- Entrega y Cupón -->
+                <div class="px-3.5 py-2 bg-white border-t border-meraki-sand space-y-1.5 shrink-0 min-w-0">
+                    <select id="delivery-method" aria-label="Modalidad de entrega" class="w-full min-w-0 bg-meraki-bg border border-meraki-sand rounded-lg px-2 py-1 text-[11px] font-bold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
+                        <option value="Envío a domicilio">Envío a domicilio</option>
+                        <option value="Retiro a coordinar">Retiro a coordinar</option>
+                    </select>
 
-                    <div class="flex space-x-1.5 pt-0.5 min-w-0">
-                        <input type="text" id="coupon-input" placeholder="Código de descuento" aria-label="Código de descuento" class="flex-1 min-w-0 bg-meraki-bg border border-meraki-sand rounded-lg px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-meraki-dark focus:outline-none focus:border-meraki-ocean">
-                        <button id="apply-coupon" type="button" class="bg-meraki-dark hover:bg-meraki-ocean text-white px-3 py-1.5 rounded-lg text-[11px] font-bold transition-colors cursor-pointer shrink-0">Aplicar</button>
+                    <div class="flex space-x-1 min-w-0">
+                        <input type="text" id="coupon-input" placeholder="Cupón de descuento" aria-label="Código de descuento" class="flex-1 min-w-0 bg-meraki-bg border border-meraki-sand rounded-lg px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-meraki-dark focus:outline-none focus:border-meraki-ocean">
+                        <button id="apply-coupon" type="button" class="bg-meraki-dark hover:bg-meraki-ocean text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition-colors cursor-pointer shrink-0">Aplicar</button>
                     </div>
                     <div id="coupon-status" class="flex items-center justify-between hidden min-w-0">
                         <p id="coupon-msg" class="text-[10px] font-bold truncate"></p>
@@ -254,21 +250,21 @@
                 </div>
 
                 <!-- Total y Botón WhatsApp -->
-                <div class="border-t border-meraki-sand px-4 sm:px-5 py-3.5 bg-meraki-bg space-y-2 shrink-0 min-w-0">
-                    <div id="subtotal-row" class="flex justify-between items-center text-[11px] text-gray-500 hidden">
+                <div class="border-t border-meraki-sand px-3.5 py-2.5 bg-meraki-bg space-y-1.5 shrink-0 min-w-0">
+                    <div id="subtotal-row" class="flex justify-between items-center text-[10px] text-gray-500 hidden">
                         <span>Subtotal:</span>
                         <span id="cart-subtotal">$0 ARS</span>
                     </div>
-                    <div id="discount-row" class="flex justify-between items-center text-[11px] text-meraki-terracotta font-bold hidden">
+                    <div id="discount-row" class="flex justify-between items-center text-[10px] text-meraki-terracotta font-bold hidden">
                         <span id="discount-label">Descuento:</span>
                         <span id="cart-discount">-$0 ARS</span>
                     </div>
                     <div class="flex justify-between items-center gap-2">
-                        <span class="text-xs text-gray-600 font-semibold">Total estimado:</span>
-                        <span id="cart-total" class="font-extrabold text-lg sm:text-xl text-meraki-dark">$0 ARS</span>
+                        <span class="text-[11px] text-gray-600 font-semibold">Total:</span>
+                        <span id="cart-total" class="font-extrabold text-base text-meraki-dark">$0 ARS</span>
                     </div>
-                    <button id="checkout-whatsapp" type="button" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 rounded-xl font-bold text-sm tracking-wide shadow-md flex items-center justify-center space-x-2 transition-all cursor-pointer">
-                        <i class="fa-brands fa-whatsapp text-lg shrink-0"></i>
+                    <button id="checkout-whatsapp" type="button" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-2 rounded-xl font-bold text-xs tracking-wide shadow-md flex items-center justify-center space-x-1.5 transition-all cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-sm shrink-0"></i>
                         <span class="truncate">Enviar Pedido por WhatsApp</span>
                     </button>
                 </div>
@@ -397,8 +393,6 @@
         let appliedCouponCode = Object.prototype.hasOwnProperty.call(COUPONS, savedCoupon) ? savedCoupon : "";
         let appliedDiscount = appliedCouponCode ? COUPONS[appliedCouponCode] : 0;
         let deliveryMethod = localStorage.getItem('meraki_delivery') || "Envío a domicilio";
-        let customerName = localStorage.getItem('meraki_customer_name') || "";
-        let shippingLocation = localStorage.getItem('meraki_shipping_location') || "";
         let couponErrorMessage = "";
 
         let selectedSizes = {};
@@ -603,7 +597,7 @@
                     shippingText.innerHTML = '🎉 <strong class="text-meraki-dark">¡Felicidades! Tenés ENVÍO GRATIS.</strong>';
                 }
                 if (shippingAlert) {
-                    shippingAlert.className = "bg-green-50 px-4 sm:px-5 py-2 border-b border-green-200 text-[11px] font-semibold text-green-800 space-y-1.5 transition-colors shrink-0 min-w-0";
+                    shippingAlert.className = "bg-green-50 px-3.5 py-1.5 border-b border-green-200 text-[10px] font-semibold text-green-800 space-y-1 transition-colors shrink-0 min-w-0";
                 }
                 if (progressBar) {
                     progressBar.className = "bg-green-600 h-full rounded-full transition-all duration-300";
@@ -612,11 +606,11 @@
                 const falta = FREE_SHIPPING_LIMIT - currentAmount;
                 if (shippingText) {
                     shippingText.innerHTML = currentAmount > 0
-                        ? `Agregá <strong>$${falta.toLocaleString('es-AR')} ARS</strong> más para obtener <strong>ENVÍO GRATIS</strong>.`
+                        ? `Agregá <strong>$${falta.toLocaleString('es-AR')} ARS</strong> más para <strong>ENVÍO GRATIS</strong>.`
                         : '¡Envío GRATIS a todo el país desde $90.000!';
                 }
                 if (shippingAlert) {
-                    shippingAlert.className = "bg-meraki-sand/70 px-4 sm:px-5 py-2 border-b border-meraki-sand text-[11px] font-semibold text-meraki-dark space-y-1.5 transition-colors shrink-0 min-w-0";
+                    shippingAlert.className = "bg-meraki-sand/70 px-3.5 py-1.5 border-b border-meraki-sand text-[10px] font-semibold text-meraki-dark space-y-1 transition-colors shrink-0 min-w-0";
                 }
                 if (progressBar) {
                     progressBar.className = "bg-meraki-ocean h-full rounded-full transition-all duration-300";
@@ -637,12 +631,8 @@
             const removeCouponBtn = document.getElementById('remove-coupon');
             const couponInput = document.getElementById('coupon-input');
             const deliverySelect = document.getElementById('delivery-method');
-            const nameInput = document.getElementById('customer-name');
-            const locationInput = document.getElementById('shipping-location');
 
             if (deliverySelect) deliverySelect.value = deliveryMethod;
-            if (nameInput) nameInput.value = customerName;
-            if (locationInput) locationInput.value = shippingLocation;
 
             if (!container) return;
             container.innerHTML = '';
@@ -650,9 +640,9 @@
             if (cart.length === 0) {
                 clearCouponState();
                 container.innerHTML = `
-                    <div class="text-center py-8">
-                        <i class="fa-solid fa-bag-shopping text-3xl text-gray-300 mb-2"></i>
-                        <p class="text-gray-500 text-xs font-medium">Todavía no agregaste mallas a tu pedido.</p>
+                    <div class="text-center py-5">
+                        <i class="fa-solid fa-bag-shopping text-xl text-gray-300 mb-1.5"></i>
+                        <p class="text-gray-500 text-[11px] font-medium">Todavía no agregaste mallas a tu pedido.</p>
                     </div>`;
                 if (totalEl) totalEl.innerText = '$0 ARS';
                 if (subtotalRow) subtotalRow.classList.add('hidden');
@@ -670,16 +660,16 @@
                 const plusDisabled = item.qty >= maxStock;
 
                 const div = document.createElement('div');
-                div.className = 'flex items-center justify-between bg-meraki-bg px-3 py-2.5 rounded-xl border border-meraki-sand gap-2 min-w-0';
+                div.className = 'flex items-center justify-between bg-meraki-bg px-2.5 py-1.5 rounded-xl border border-meraki-sand gap-2 min-w-0';
                 div.innerHTML = `
                     <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-xs text-meraki-dark leading-tight truncate">${item.name}</h4>
-                        <p class="text-[11px] text-gray-500 mt-0.5 truncate">Talle: <span class="font-semibold text-meraki-dark">${item.size}</span> • <span class="font-extrabold text-meraki-ocean">$${(item.price * item.qty).toLocaleString('es-AR')} ARS</span></p>
+                        <h4 class="font-bold text-[11px] text-meraki-dark leading-tight truncate">${item.name}</h4>
+                        <p class="text-[10px] text-gray-500 mt-0.5 truncate">Talle: <span class="font-semibold text-meraki-dark">${item.size}</span> • <span class="font-extrabold text-meraki-ocean">$${(item.price * item.qty).toLocaleString('es-AR')} ARS</span></p>
                     </div>
-                    <div class="flex items-center space-x-1 bg-white border border-meraki-sand rounded-lg px-1.5 py-0.5 shrink-0">
-                        <button id="minus-${index}" type="button" aria-label="Restar unidad" class="text-gray-500 hover:text-meraki-dark px-1 font-bold text-xs cursor-pointer">-</button>
-                        <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
-                        <button id="plus-${index}" type="button" aria-label="Sumar unidad" ${plusDisabled ? 'disabled' : ''} class="${plusDisabled ? 'text-gray-300 cursor-not-allowed' : 'text-gray-500 hover:text-meraki-dark cursor-pointer'} px-1 font-bold text-xs">+</button>
+                    <div class="flex items-center space-x-1 bg-white border border-meraki-sand rounded-lg px-1 py-0.5 shrink-0">
+                        <button id="minus-${index}" type="button" aria-label="Restar unidad" class="text-gray-500 hover:text-meraki-dark px-1 font-bold text-[11px] cursor-pointer">-</button>
+                        <span class="text-[11px] font-bold w-3.5 text-center">${item.qty}</span>
+                        <button id="plus-${index}" type="button" aria-label="Sumar unidad" ${plusDisabled ? 'disabled' : ''} class="${plusDisabled ? 'text-gray-300 cursor-not-allowed' : 'text-gray-500 hover:text-meraki-dark cursor-pointer'} px-1 font-bold text-[11px]">+</button>
                     </div>
                 `;
                 container.appendChild(div);
@@ -763,16 +753,6 @@
             localStorage.setItem('meraki_delivery', deliveryMethod);
         });
 
-        document.getElementById('customer-name').addEventListener('input', (e) => {
-            customerName = e.target.value;
-            localStorage.setItem('meraki_customer_name', customerName);
-        });
-
-        document.getElementById('shipping-location').addEventListener('input', (e) => {
-            shippingLocation = e.target.value;
-            localStorage.setItem('meraki_shipping_location', shippingLocation);
-        });
-
         function openCart() {
             document.getElementById('cart-drawer').classList.remove('hidden');
         }
@@ -806,17 +786,13 @@
             const discountAmount = subtotal * appliedDiscount;
             const total = subtotal - discountAmount;
             const pct = Math.round(appliedDiscount * 100);
-            const nameVal = document.getElementById('customer-name').value.trim();
-            const locationVal = document.getElementById('shipping-location').value.trim();
 
             let message = "Hola *MERAKI SWIM.CO*! 👋 Quisiera realizar el siguiente pedido:\n\n";
-            if (nameVal) message += `👤 Nombre: *${nameVal}*\n`;
             cart.forEach(item => {
                 message += `▪️ *${item.name}*\n   Talle: ${item.size} | Cantidad: ${item.qty} | Subtotal: $${(item.price * item.qty).toLocaleString('es-AR')} ARS\n\n`;
             });
 
             message += `📦 Modalidad: *${deliveryMethod}*\n`;
-            if (locationVal) message += `📍 Ubicación / Envío: *${locationVal}*\n`;
             
             if (appliedDiscount > 0) {
                 message += `🎟️ Cupón aplicado: *${appliedCouponCode}* (-${pct}%)\n`;
