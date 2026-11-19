@@ -113,27 +113,28 @@
         </div>
     </main>
 
-    <!-- Guía de Talles -->
+    <!-- Guía de Talles Estilo Surfer (30 al 40) -->
     <section id="talles" class="bg-meraki-sand/40 py-16 border-t border-b border-meraki-sand">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="text-xs uppercase font-bold tracking-[0.25em] text-meraki-ocean">Referencia de Medidas</span>
-            <h2 class="text-2xl md:text-3xl font-extrabold mt-1 mb-3">Guía de Talles</h2>
-            <p class="text-gray-600 text-sm mb-8">Medidas tomadas sobre la prenda apoyada en superficie plana (en centímetros).</p>
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <span class="text-xs uppercase font-bold tracking-[0.25em] text-meraki-ocean">Fit Boardshorts Surfer</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold mt-1 mb-3">Guía de Talles Surfer</h2>
+            <p class="text-gray-600 text-sm mb-8">Talles surfer del 30 al 40 con contorno de cintura y largo total de *boardshort* (en centímetros y pulgadas).</p>
             <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-meraki-sand p-6">
                 <table class="w-full text-left text-sm">
                     <thead>
                         <tr class="border-b border-meraki-sand text-meraki-ocean font-bold uppercase text-xs tracking-wider">
                             <th class="pb-3">Talle</th>
-                            <th class="pb-3">Ancho de Cintura</th>
+                            <th class="pb-3">Contorno Cintura</th>
                             <th class="pb-3">Largo Total</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-meraki-sand text-gray-700">
-                        <tr><td class="py-3.5 font-bold text-meraki-dark">38 (S)</td><td>38 - 40 cm</td><td>50 cm</td></tr>
-                        <tr><td class="py-3.5 font-bold text-meraki-dark">40 (M)</td><td>41 - 43 cm</td><td>52 cm</td></tr>
-                        <tr><td class="py-3.5 font-bold text-meraki-dark">42 (L)</td><td>44 - 46 cm</td><td>54 cm</td></tr>
-                        <tr><td class="py-3.5 font-bold text-meraki-dark">44 (XL)</td><td>47 - 49 cm</td><td>56 cm</td></tr>
-                        <tr><td class="py-3.5 font-bold text-meraki-dark">46 (XXL)</td><td>50 - 52 cm</td><td>58 cm</td></tr>
+                        <tr><td class="py-3.5 font-bold text-meraki-dark">Talle 30</td><td>76 - 78 cm</td><td>49 cm (19")</td></tr>
+                        <tr><td class="py-3.5 font-bold text-meraki-dark">Talle 32</td><td>81 - 83 cm</td><td>51 cm (20")</td></tr>
+                        <tr><td class="py-3.5 font-bold text-meraki-dark">Talle 34</td><td>86 - 88 cm</td><td>53 cm (21")</td></tr>
+                        <tr><td class="py-3.5 font-bold text-meraki-dark">Talle 36</td><td>91 - 93 cm</td><td>55 cm (21.5")</td></tr>
+                        <tr><td class="py-3.5 font-bold text-meraki-dark">Talle 38</td><td>96 - 98 cm</td><td>56 cm (22")</td></tr>
+                        <tr><td class="py-3.5 font-bold text-meraki-dark">Talle 40</td><td>101 - 104 cm</td><td>58 cm (23")</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -305,7 +306,8 @@
         let deliveryMethod = localStorage.getItem('meraki_delivery') || "Envío a domicilio";
         let couponErrorMessage = "";
 
-        const sizes = ["38 (S)", "40 (M)", "42 (L)", "44 (XL)", "46 (XXL)"];
+        // Talles surfer del 30 al 40
+        const sizes = ["Talle 30", "Talle 32", "Talle 34", "Talle 36", "Talle 38", "Talle 40"];
         let selectedSizes = {};
         let currentImageIndexes = {};
 
@@ -337,7 +339,7 @@
                 const actionHTML = p.available
                     ? `
                         <div class="mb-5">
-                            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Seleccionar Talle:</label>
+                            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Seleccionar Talle Surfer:</label>
                             <select id="select-size-${p.id}" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2.5 text-sm font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
                                 ${sizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s}</option>`).join('')}
                             </select>
