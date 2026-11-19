@@ -153,8 +153,14 @@
             </div>
 
             <div>
-                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-4">Contacto Oficial</h4>
+                <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-4">Contacto y Redes</h4>
                 <ul class="space-y-3 text-sm text-gray-300">
+                    <li>
+                        <a href="https://www.instagram.com/merakiswim.co/" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center space-x-2.5 transition-colors">
+                            <i class="fa-brands fa-instagram text-meraki-terracotta text-base"></i>
+                            <span>@merakiswim.co</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="https://wa.me/5493764296642" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center space-x-2.5 transition-colors">
                             <i class="fa-brands fa-whatsapp text-[#25D366] text-base"></i>
@@ -209,23 +215,40 @@
                     <button id="close-cart" type="button" aria-label="Cerrar pedido" class="text-gray-400 hover:text-meraki-dark text-xl p-1 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 
-                <!-- Aviso de Envío Gratis en Carrito -->
-                <div id="shipping-alert" class="bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark flex items-center space-x-2">
-                    <i class="fa-solid fa-truck-fast text-meraki-ocean text-base"></i>
-                    <span id="shipping-text">¡Agregá más productos para calificar al envío gratis!</span>
+                <!-- Aviso y Barra de Progreso de Envío Gratis -->
+                <div id="shipping-alert" class="bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark space-y-2 transition-colors">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-truck-fast text-meraki-ocean text-base shrink-0"></i>
+                        <span id="shipping-text">¡Agregá más productos para calificar al envío gratis!</span>
+                    </div>
+                    <div class="w-full bg-white/80 rounded-full h-2 overflow-hidden border border-meraki-sand/80">
+                        <div id="shipping-progress-bar" class="bg-meraki-ocean h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
+                    </div>
                 </div>
 
                 <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
                     <!-- Items dinámicos -->
                 </div>
 
-                <!-- Modalidad de Entrega -->
-                <div class="px-6 py-3 bg-white border-t border-meraki-sand">
-                    <label for="delivery-method" class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1.5">Modalidad de entrega:</label>
-                    <select id="delivery-method" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
-                        <option value="Envío a domicilio">Envío a domicilio</option>
-                        <option value="Retiro a coordinar">Retiro a coordinar</option>
-                    </select>
+                <!-- Modalidad y Datos de Envío -->
+                <div class="px-6 py-3.5 bg-white border-t border-meraki-sand space-y-2.5">
+                    <div>
+                        <label for="delivery-method" class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1">Modalidad de entrega:</label>
+                        <select id="delivery-method" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
+                            <option value="Envío a domicilio">Envío a domicilio</option>
+                            <option value="Retiro a coordinar">Retiro a coordinar</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div>
+                            <label for="customer-name" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Tu nombre:</label>
+                            <input type="text" id="customer-name" placeholder="Ej. Lucas" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3 py-1.5 text-xs font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean">
+                        </div>
+                        <div>
+                            <label for="shipping-location" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Ciudad / Dirección:</label>
+                            <input type="text" id="shipping-location" placeholder="Ej. Posadas, Misiones" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3 py-1.5 text-xs font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sección de Cupón de Descuento -->
@@ -385,6 +408,8 @@
         let appliedCouponCode = Object.prototype.hasOwnProperty.call(COUPONS, savedCoupon) ? savedCoupon : "";
         let appliedDiscount = appliedCouponCode ? COUPONS[appliedCouponCode] : 0;
         let deliveryMethod = localStorage.getItem('meraki_delivery') || "Envío a domicilio";
+        let customerName = localStorage.getItem('meraki_customer_name') || "";
+        let shippingLocation = localStorage.getItem('meraki_shipping_location') || "";
         let couponErrorMessage = "";
 
         let selectedSizes = {};
@@ -573,6 +598,43 @@
             if (badge) badge.innerText = totalQty;
         }
 
+        function updateShippingProgress(currentAmount) {
+            const shippingText = document.getElementById('shipping-text');
+            const shippingAlert = document.getElementById('shipping-alert');
+            const progressBar = document.getElementById('shipping-progress-bar');
+
+            const pct = Math.min(100, Math.max(0, (currentAmount / FREE_SHIPPING_LIMIT) * 100));
+
+            if (progressBar) {
+                progressBar.style.width = `${pct}%`;
+            }
+
+            if (currentAmount >= FREE_SHIPPING_LIMIT) {
+                if (shippingText) {
+                    shippingText.innerHTML = '🎉 <strong class="text-meraki-dark">¡Felicidades! Tenés ENVÍO GRATIS.</strong>';
+                }
+                if (shippingAlert) {
+                    shippingAlert.className = "bg-green-50 px-6 py-3 border-b border-green-200 text-xs font-semibold text-green-800 space-y-2 transition-colors";
+                }
+                if (progressBar) {
+                    progressBar.className = "bg-green-600 h-full rounded-full transition-all duration-300";
+                }
+            } else {
+                const falta = FREE_SHIPPING_LIMIT - currentAmount;
+                if (shippingText) {
+                    shippingText.innerHTML = currentAmount > 0
+                        ? `Agregá <strong>$${falta.toLocaleString('es-AR')} ARS</strong> más para obtener <strong>ENVÍO GRATIS</strong>.`
+                        : '¡Envío GRATIS a todo el país desde $90.000!';
+                }
+                if (shippingAlert) {
+                    shippingAlert.className = "bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark space-y-2 transition-colors";
+                }
+                if (progressBar) {
+                    progressBar.className = "bg-meraki-ocean h-full rounded-full transition-all duration-300";
+                }
+            }
+        }
+
         function renderCartItems() {
             const container = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
@@ -581,17 +643,17 @@
             const discountLabel = document.getElementById('discount-label');
             const subtotalRow = document.getElementById('subtotal-row');
             const discountRow = document.getElementById('discount-row');
-            const shippingText = document.getElementById('shipping-text');
-            const shippingAlert = document.getElementById('shipping-alert');
             const couponStatus = document.getElementById('coupon-status');
             const couponMsg = document.getElementById('coupon-msg');
             const removeCouponBtn = document.getElementById('remove-coupon');
             const couponInput = document.getElementById('coupon-input');
             const deliverySelect = document.getElementById('delivery-method');
+            const nameInput = document.getElementById('customer-name');
+            const locationInput = document.getElementById('shipping-location');
 
-            if (deliverySelect) {
-                deliverySelect.value = deliveryMethod;
-            }
+            if (deliverySelect) deliverySelect.value = deliveryMethod;
+            if (nameInput) nameInput.value = customerName;
+            if (locationInput) locationInput.value = shippingLocation;
 
             if (!container) return;
             container.innerHTML = '';
@@ -608,10 +670,7 @@
                 if (discountRow) discountRow.classList.add('hidden');
                 if (couponStatus) couponStatus.classList.add('hidden');
                 if (removeCouponBtn) removeCouponBtn.classList.add('hidden');
-                if (shippingText) shippingText.innerText = '¡Envío GRATIS a todo el país desde $90.000!';
-                if (shippingAlert) {
-                    shippingAlert.className = "bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark flex items-center space-x-2";
-                }
+                updateShippingProgress(0);
                 return;
             }
 
@@ -676,17 +735,7 @@
             }
 
             if (totalEl) totalEl.innerText = `$${total.toLocaleString('es-AR')} ARS`;
-
-            if (shippingText && shippingAlert) {
-                if (total >= FREE_SHIPPING_LIMIT) {
-                    shippingText.innerHTML = '🎉 <strong class="text-meraki-dark">¡Felicidades! Tenés ENVÍO GRATIS.</strong>';
-                    shippingAlert.className = "bg-green-50 px-6 py-3 border-b border-green-200 text-xs font-semibold text-green-800 flex items-center space-x-2";
-                } else {
-                    const falta = FREE_SHIPPING_LIMIT - total;
-                    shippingText.innerHTML = `Agregá <strong>$${falta.toLocaleString('es-AR')} ARS</strong> más para obtener <strong>ENVÍO GRATIS</strong>.`;
-                    shippingAlert.className = "bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark flex items-center space-x-2";
-                }
-            }
+            updateShippingProgress(total);
         }
 
         document.getElementById('apply-coupon').addEventListener('click', () => {
@@ -726,6 +775,16 @@
             localStorage.setItem('meraki_delivery', deliveryMethod);
         });
 
+        document.getElementById('customer-name').addEventListener('input', (e) => {
+            customerName = e.target.value;
+            localStorage.setItem('meraki_customer_name', customerName);
+        });
+
+        document.getElementById('shipping-location').addEventListener('input', (e) => {
+            shippingLocation = e.target.value;
+            localStorage.setItem('meraki_shipping_location', shippingLocation);
+        });
+
         function openCart() {
             document.getElementById('cart-drawer').classList.remove('hidden');
         }
@@ -759,13 +818,17 @@
             const discountAmount = subtotal * appliedDiscount;
             const total = subtotal - discountAmount;
             const pct = Math.round(appliedDiscount * 100);
+            const nameVal = document.getElementById('customer-name').value.trim();
+            const locationVal = document.getElementById('shipping-location').value.trim();
 
             let message = "Hola *MERAKI SWIM.CO*! 👋 Quisiera realizar el siguiente pedido:\n\n";
+            if (nameVal) message += `👤 Nombre: *${nameVal}*\n`;
             cart.forEach(item => {
                 message += `▪️ *${item.name}*\n   Talle: ${item.size} | Cantidad: ${item.qty} | Subtotal: $${(item.price * item.qty).toLocaleString('es-AR')} ARS\n\n`;
             });
 
             message += `📦 Modalidad: *${deliveryMethod}*\n`;
+            if (locationVal) message += `📍 Ubicación / Envío: *${locationVal}*\n`;
             
             if (appliedDiscount > 0) {
                 message += `🎟️ Cupón aplicado: *${appliedCouponCode}* (-${pct}%)\n`;
