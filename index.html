@@ -366,7 +366,6 @@
         }
 
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
-        // Limpiar ítems guardados sin stock o que superen el stock actual
         cart = cart.reduce((acc, item) => {
             const maxStock = getSizeStock(item.id, item.size);
             const product = products.find(p => p.id === item.id);
@@ -426,7 +425,7 @@
                         <div class="mb-5">
                             <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Talles Disponibles:</label>
                             <select id="select-size-${p.id}" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2.5 text-sm font-semibold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
-                                ${availableSizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s} (${p.stockBySize[s]} disp.)</option>`).join('')}
+                                ${availableSizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s}</option>`).join('')}
                             </select>
                         </div>
                         <button id="add-btn-${p.id}" type="button" class="mt-auto w-full bg-meraki-dark text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-meraki-ocean transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer">
@@ -523,7 +522,7 @@
                 if (cartItem.qty < maxStock) {
                     cartItem.qty += 1;
                 } else {
-                    alert(`Solo hay ${maxStock} ${maxStock === 1 ? 'unidad disponible' : 'unidades disponibles'} de ${product.name} en ${size}.`);
+                    alert(`No hay más unidades disponibles de ${product.name} en ${size}.`);
                 }
             } else {
                 cart.push({ ...product, size, qty: 1, selectedImage: imgSrc });
@@ -540,7 +539,7 @@
             if (delta > 0) {
                 const maxStock = getSizeStock(item.id, item.size);
                 if (item.qty >= maxStock) {
-                    alert(`Alcanzaste el stock máximo disponible (${maxStock}) para ${item.size}.`);
+                    alert(`No hay más stock disponible para ${item.size}.`);
                     return;
                 }
             }
@@ -627,7 +626,7 @@
                 div.innerHTML = `
                     <div class="flex-1">
                         <h4 class="font-bold text-sm text-meraki-dark leading-tight">${item.name}</h4>
-                        <p class="text-xs text-gray-500 mt-1">Talle: <span class="font-semibold text-meraki-dark">${item.size}</span> <span class="text-[11px] text-gray-400">(máx. ${maxStock})</span></p>
+                        <p class="text-xs text-gray-500 mt-1">Talle: <span class="font-semibold text-meraki-dark">${item.size}</span></p>
                         <p class="text-sm font-extrabold text-meraki-ocean mt-1">$${(item.price * item.qty).toLocaleString('es-AR')} ARS</p>
                     </div>
                     <div class="flex items-center space-x-2 bg-white border border-meraki-sand rounded-lg px-2 py-1">
