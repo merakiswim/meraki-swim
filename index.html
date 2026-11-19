@@ -61,7 +61,7 @@
 
             <!-- Botón Carrito -->
             <div class="flex items-center space-x-3">
-                <button id="cart-btn" class="relative flex items-center space-x-2 bg-meraki-sand/70 hover:bg-meraki-sand px-4 py-2.5 rounded-full text-meraki-dark transition-all cursor-pointer">
+                <button id="cart-btn" type="button" class="relative flex items-center space-x-2 bg-meraki-sand/70 hover:bg-meraki-sand px-4 py-2.5 rounded-full text-meraki-dark transition-all cursor-pointer">
                     <i class="fa-solid fa-bag-shopping text-lg"></i>
                     <span class="text-xs font-bold hidden sm:inline">Pedido</span>
                     <span id="cart-badge" class="bg-meraki-terracotta text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
@@ -81,7 +81,7 @@
                     <span>Explorar Modelos</span>
                     <i class="fa-solid fa-arrow-down text-xs"></i>
                 </a>
-                <a href="https://wa.me/5493764296642?text=Hola%20MERAKI%20SWIM.CO!%20Tengo%20una%20consulta%20sobre%20las%20mallas." target="_blank" class="w-full sm:w-auto bg-white text-meraki-dark border border-meraki-sand px-8 py-4 rounded-full font-semibold tracking-wide hover:border-meraki-dark transition-all inline-flex items-center justify-center space-x-2">
+                <a href="https://wa.me/5493764296642?text=Hola%20MERAKI%20SWIM.CO!%20Tengo%20una%20consulta%20sobre%20las%20mallas." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white text-meraki-dark border border-meraki-sand px-8 py-4 rounded-full font-semibold tracking-wide hover:border-meraki-dark transition-all inline-flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-[#25D366] text-lg"></i>
                     <span>Consultar por WhatsApp</span>
                 </a>
@@ -99,11 +99,11 @@
             
             <!-- Filtros de categoría -->
             <div class="flex flex-wrap gap-2 mt-5 md:mt-0" id="category-filters">
-                <button data-filter="all" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-dark text-white transition-all cursor-pointer">Todos (14)</button>
-                <button data-filter="metallica" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Metallica (6)</button>
-                <button data-filter="rayadas" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Rayadas (3)</button>
-                <button data-filter="clasica" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Clásica (3)</button>
-                <button data-filter="urbanos" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Urbanos (2)</button>
+                <button data-filter="all" type="button" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-dark text-white transition-all cursor-pointer">Todos (14)</button>
+                <button data-filter="metallica" type="button" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Metallica (6)</button>
+                <button data-filter="rayadas" type="button" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Rayadas (3)</button>
+                <button data-filter="clasica" type="button" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Clásica (3)</button>
+                <button data-filter="urbanos" type="button" class="filter-btn px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-full bg-meraki-sand text-meraki-dark hover:bg-gray-200 transition-all cursor-pointer">Urbanos (2)</button>
             </div>
         </div>
 
@@ -155,7 +155,7 @@
                 <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-4">Contacto Oficial</h4>
                 <ul class="space-y-3 text-sm text-gray-300">
                     <li>
-                        <a href="https://wa.me/5493764296642" target="_blank" class="hover:text-white flex items-center space-x-2.5 transition-colors">
+                        <a href="https://wa.me/5493764296642" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center space-x-2.5 transition-colors">
                             <i class="fa-brands fa-whatsapp text-[#25D366] text-base"></i>
                             <span>+54 9 376 429-6642</span>
                         </a>
@@ -180,13 +180,13 @@
     </footer>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/5493764296642?text=Hola%20MERAKI%20SWIM.CO!%20Quisiera%20hacer%20una%20consulta." target="_blank" aria-label="Contactar por WhatsApp" class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110">
+    <a href="https://wa.me/5493764296642?text=Hola%20MERAKI%20SWIM.CO!%20Quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <!-- Modal / Vista Previa de Imagen en Grande -->
     <div id="image-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <button id="close-modal" class="absolute top-5 right-5 text-white text-3xl hover:text-gray-300 p-2 cursor-pointer focus:outline-none">
+        <button id="close-modal" type="button" aria-label="Cerrar vista previa" class="absolute top-5 right-5 text-white text-3xl hover:text-gray-300 p-2 cursor-pointer focus:outline-none">
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="relative max-w-3xl w-full max-h-[90vh] flex flex-col items-center">
@@ -205,7 +205,7 @@
                         <i class="fa-solid fa-bag-shopping text-meraki-ocean"></i>
                         <h3 class="font-extrabold text-lg text-meraki-dark">Tu Pedido</h3>
                     </div>
-                    <button id="close-cart" class="text-gray-400 hover:text-meraki-dark text-xl p-1 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="close-cart" type="button" aria-label="Cerrar pedido" class="text-gray-400 hover:text-meraki-dark text-xl p-1 cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 
                 <!-- Aviso de Envío Gratis en Carrito -->
@@ -218,14 +218,26 @@
                     <!-- Items dinámicos -->
                 </div>
 
+                <!-- Modalidad de Entrega -->
+                <div class="px-6 py-3 bg-white border-t border-meraki-sand">
+                    <label for="delivery-method" class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1.5">Modalidad de entrega:</label>
+                    <select id="delivery-method" class="w-full bg-meraki-bg border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold text-meraki-dark focus:outline-none focus:border-meraki-ocean cursor-pointer">
+                        <option value="Envío a domicilio">Envío a domicilio</option>
+                        <option value="Retiro a coordinar">Retiro a coordinar</option>
+                    </select>
+                </div>
+
                 <!-- Sección de Cupón de Descuento -->
                 <div class="px-6 py-3 bg-meraki-sand/30 border-t border-meraki-sand">
-                    <label class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1.5">¿Tenés un código de descuento?</label>
+                    <label for="coupon-input" class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1.5">¿Tenés un código de descuento?</label>
                     <div class="flex space-x-2">
-                        <input type="text" id="coupon-input" placeholder="Ej: MERAKI15" class="flex-1 bg-white border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-meraki-dark focus:outline-none focus:border-meraki-ocean">
-                        <button id="apply-coupon" class="bg-meraki-dark hover:bg-meraki-ocean text-white px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-colors cursor-pointer">Aplicar</button>
+                        <input type="text" id="coupon-input" placeholder="Ej: FRANCO15" class="flex-1 bg-white border border-meraki-sand rounded-xl px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-meraki-dark focus:outline-none focus:border-meraki-ocean">
+                        <button id="apply-coupon" type="button" class="bg-meraki-dark hover:bg-meraki-ocean text-white px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-colors cursor-pointer">Aplicar</button>
                     </div>
-                    <p id="coupon-msg" class="text-[11px] mt-1.5 font-medium hidden"></p>
+                    <div id="coupon-status" class="mt-1.5 flex items-center justify-between hidden">
+                        <p id="coupon-msg" class="text-[11px] font-bold"></p>
+                        <button id="remove-coupon" type="button" class="text-[11px] font-bold text-gray-500 hover:text-meraki-terracotta underline ml-2 cursor-pointer hidden">Quitar cupón</button>
+                    </div>
                 </div>
 
                 <div class="border-t border-meraki-sand p-6 bg-meraki-bg space-y-3">
@@ -234,14 +246,14 @@
                         <span id="cart-subtotal">$0 ARS</span>
                     </div>
                     <div id="discount-row" class="flex justify-between items-center text-xs text-meraki-terracotta font-bold hidden">
-                        <span id="discount-label">Descuento aplicado (15%):</span>
+                        <span id="discount-label">Descuento aplicado:</span>
                         <span id="cart-discount">-$0 ARS</span>
                     </div>
                     <div class="flex justify-between items-center pt-1 border-t border-meraki-sand/60">
                         <span class="text-sm text-gray-600 font-medium">Total estimado:</span>
                         <span id="cart-total" class="font-extrabold text-2xl text-meraki-dark">$0 ARS</span>
                     </div>
-                    <button id="checkout-whatsapp" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-4 rounded-xl font-bold tracking-wide shadow-lg flex items-center justify-center space-x-2.5 transition-all cursor-pointer">
+                    <button id="checkout-whatsapp" type="button" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-4 rounded-xl font-bold tracking-wide shadow-lg flex items-center justify-center space-x-2.5 transition-all cursor-pointer">
                         <i class="fa-brands fa-whatsapp text-xl"></i>
                         <span>Enviar Pedido por WhatsApp</span>
                     </button>
@@ -256,8 +268,14 @@
         const WHATSAPP_NUMBER = "5493764296642";
         const FREE_SHIPPING_LIMIT = 90000;
 
+        // Únicos códigos de descuento válidos (15% OFF)
+        const COUPONS = {
+            "FRANCO15": 0.15,
+            "MARCOS15": 0.15,
+            "GIANLU15": 0.15
+        };
+
         const products = [
-            // 1. Categoría Metallica ($22.000, activas con carrito y orden Dorso -> Frente)
             { id: 1, name: "Boardshort Billabong Metallica Black Camo", price: 22000, available: true, category: "metallica", images: ["black-camo.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
             { id: 2, name: "Boardshort Billabong Metallica Electric Blue", price: 22000, available: true, category: "metallica", images: ["electric-blue.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
             { id: 3, name: "Boardshort Billabong Metallica Blood Red", price: 22000, available: true, category: "metallica", images: ["blood-red.jpeg", "frente-talle34.jpeg"], badge: "Metallica" },
@@ -265,24 +283,25 @@
             { id: 5, name: "Boardshort Billabong Metallica Tropical Grey", price: 22000, available: true, category: "metallica", images: ["tropical-grey.jpeg", "frente-tropical-grey.jpeg"], badge: "Metallica" },
             { id: 6, name: "Boardshort Billabong Metallica Carmesí", price: 22000, available: true, category: "metallica", images: ["carmesi.jpeg", "frente-carmesi.jpeg"], badge: "Metallica" },
 
-            // 2. Categoría Rayadas (Próximamente, con los nombres exactos de tus nuevas imágenes de dorso)
             { id: 7, name: "Boardshort Billabong Pinstripe Black", price: null, available: false, category: "rayadas", images: ["rayada-negra-dorso.jpeg", "rayada-negra.jpg"], badge: "Rayadas" },
             { id: 8, name: "Boardshort Billabong Pinstripe Navy Blue", price: null, available: false, category: "rayadas", images: ["rayada-azul-dorso.jpeg", "rayada-azul.jpg"], badge: "Rayadas" },
             { id: 9, name: "Boardshort Billabong Pinstripe Red", price: null, available: false, category: "rayadas", images: ["rayada-roja-dorso.jpeg", "rayada-roja.jpg"], badge: "Rayadas" },
 
-            // 3. Categoría Clásica (Próximamente)
             { id: 10, name: "Boardshort Hang Ten Vintage Red Signature", price: null, available: false, category: "clasica", images: ["malla-roja-reverso.jpg", "malla-roja.jpg"], badge: "Clásica" },
             { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul-reverso.webp", "hurley azul.webp"], badge: "Clásica" },
             { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti-reverso.webp", "malla taverniti.webp"], badge: "Clásica" },
 
-            // 4. Categoría Urbanos (Próximamente)
             { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["malla violeta-reverso.webp", "malla violeta.webp"], badge: "Urbanos" },
             { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["malla letras flow-reverso.webp", "malla letras flow.webp"], badge: "Urbanos" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
-        let appliedDiscount = parseFloat(localStorage.getItem('meraki_discount')) || 0;
-        let appliedCouponCode = localStorage.getItem('meraki_coupon') || "";
+        let savedCoupon = localStorage.getItem('meraki_coupon') || "";
+        let appliedCouponCode = Object.prototype.hasOwnProperty.call(COUPONS, savedCoupon) ? savedCoupon : "";
+        let appliedDiscount = appliedCouponCode ? COUPONS[appliedCouponCode] : 0;
+        let deliveryMethod = localStorage.getItem('meraki_delivery') || "Envío a domicilio";
+        let couponErrorMessage = "";
+
         const sizes = ["38 (S)", "40 (M)", "42 (L)", "44 (XL)", "46 (XXL)"];
         let selectedSizes = {};
         let currentImageIndexes = {};
@@ -295,18 +314,15 @@
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
 
             filtered.forEach(p => {
-                if(!selectedSizes[p.id]) selectedSizes[p.id] = sizes[1];
-                if(currentImageIndexes[p.id] === undefined) currentImageIndexes[p.id] = 0;
+                if (!selectedSizes[p.id]) selectedSizes[p.id] = sizes[1];
+                if (currentImageIndexes[p.id] === undefined) currentImageIndexes[p.id] = 0;
 
                 const activeImgIndex = currentImageIndexes[p.id];
                 const currentImgSrc = p.images[activeImgIndex] || p.images[0];
 
-                let labelText = "";
-                if (p.category === 'metallica' || p.category === 'rayadas') {
-                    labelText = (activeImgIndex === 0) ? 'DORSO' : 'FRENTE';
-                } else {
-                    labelText = (activeImgIndex === 0) ? 'FRENTE' : 'DORSO';
-                }
+                const labelText = (p.category === 'metallica' || p.category === 'rayadas')
+                    ? (activeImgIndex === 0 ? 'DORSO' : 'FRENTE')
+                    : (activeImgIndex === 0 ? 'FRENTE' : 'DORSO');
 
                 const card = document.createElement('div');
                 card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-meraki-sand flex flex-col group';
@@ -323,13 +339,13 @@
                                 ${sizes.map(s => `<option value="${s}" ${selectedSizes[p.id] === s ? 'selected' : ''}>${s}</option>`).join('')}
                             </select>
                         </div>
-                        <button id="add-btn-${p.id}" class="mt-auto w-full bg-meraki-dark text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-meraki-ocean transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer">
+                        <button id="add-btn-${p.id}" type="button" class="mt-auto w-full bg-meraki-dark text-white py-3.5 rounded-xl font-semibold text-sm hover:bg-meraki-ocean transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer">
                             <i class="fa-solid fa-plus text-xs"></i>
                             <span>Agregar al Pedido</span>
                         </button>
                     `
                     : `
-                        <button disabled class="mt-auto w-full bg-meraki-sand text-gray-500 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2 cursor-not-allowed">
+                        <button type="button" disabled class="mt-auto w-full bg-meraki-sand text-gray-500 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center space-x-2 cursor-not-allowed">
                             <i class="fa-regular fa-clock text-sm"></i>
                             <span>Próximamente</span>
                         </button>
@@ -342,9 +358,9 @@
                         <span class="absolute top-3.5 left-3.5 bg-meraki-dark/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full pointer-events-none">${p.badge}</span>
                         
                         <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md rounded-full px-3 py-1 flex items-center space-x-2 z-10">
-                            <button id="prev-img-${p.id}" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button id="prev-img-${p.id}" type="button" aria-label="Imagen anterior" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-left"></i></button>
                             <span class="text-white text-[11px] font-bold tracking-wider">${labelText}</span>
-                            <button id="next-img-${p.id}" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button id="next-img-${p.id}" type="button" aria-label="Imagen siguiente" class="text-white hover:text-meraki-sand px-1.5 text-xs cursor-pointer"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
@@ -356,20 +372,17 @@
 
                 grid.appendChild(card);
 
-                card.querySelector(`#prev-img-${p.id}`).addEventListener('click', (e) => {
+                const toggleImage = (e) => {
                     e.stopPropagation();
                     currentImageIndexes[p.id] = currentImageIndexes[p.id] === 0 ? 1 : 0;
                     renderProducts(filter);
-                });
+                };
 
-                card.querySelector(`#next-img-${p.id}`).addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    currentImageIndexes[p.id] = currentImageIndexes[p.id] === 0 ? 1 : 0;
-                    renderProducts(filter);
-                });
+                card.querySelector(`#prev-img-${p.id}`).addEventListener('click', toggleImage);
+                card.querySelector(`#next-img-${p.id}`).addEventListener('click', toggleImage);
 
                 card.querySelector('.img-zoom-trigger').addEventListener('click', () => {
-                    openModal(currentImgSrc, p.name + ` (${labelText})`);
+                    openModal(currentImgSrc, `${p.name} (${labelText})`);
                 });
 
                 if (p.available) {
@@ -410,7 +423,7 @@
             const size = selectedSizes[productId] || sizes[1];
             const cartItem = cart.find(item => item.id === productId && item.size === size);
 
-            if(cartItem) {
+            if (cartItem) {
                 cartItem.qty += 1;
             } else {
                 cart.push({ ...product, size, qty: 1, selectedImage: imgSrc });
@@ -428,6 +441,16 @@
             saveCart();
         }
 
+        function clearCouponState() {
+            appliedDiscount = 0;
+            appliedCouponCode = "";
+            couponErrorMessage = "";
+            localStorage.removeItem('meraki_discount');
+            localStorage.removeItem('meraki_coupon');
+            const couponInput = document.getElementById('coupon-input');
+            if (couponInput) couponInput.value = "";
+        }
+
         function saveCart() {
             localStorage.setItem('meraki_cart', JSON.stringify(cart));
             updateCartBadge();
@@ -437,7 +460,7 @@
         function updateCartBadge() {
             const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
             const badge = document.getElementById('cart-badge');
-            if(badge) badge.innerText = totalQty;
+            if (badge) badge.innerText = totalQty;
         }
 
         function renderCartItems() {
@@ -445,26 +468,40 @@
             const totalEl = document.getElementById('cart-total');
             const subtotalEl = document.getElementById('cart-subtotal');
             const discountEl = document.getElementById('cart-discount');
+            const discountLabel = document.getElementById('discount-label');
             const subtotalRow = document.getElementById('subtotal-row');
             const discountRow = document.getElementById('discount-row');
             const shippingText = document.getElementById('shipping-text');
             const shippingAlert = document.getElementById('shipping-alert');
+            const couponStatus = document.getElementById('coupon-status');
             const couponMsg = document.getElementById('coupon-msg');
+            const removeCouponBtn = document.getElementById('remove-coupon');
             const couponInput = document.getElementById('coupon-input');
+            const deliverySelect = document.getElementById('delivery-method');
+
+            if (deliverySelect) {
+                deliverySelect.value = deliveryMethod;
+            }
 
             if (!container) return;
             container.innerHTML = '';
 
-            if(cart.length === 0) {
+            if (cart.length === 0) {
+                clearCouponState();
                 container.innerHTML = `
                     <div class="text-center py-12">
                         <i class="fa-solid fa-bag-shopping text-4xl text-gray-300 mb-3"></i>
                         <p class="text-gray-500 text-sm font-medium">Todavía no agregaste mallas a tu pedido.</p>
                     </div>`;
-                if(totalEl) totalEl.innerText = '$0 ARS';
-                if(subtotalRow) subtotalRow.classList.add('hidden');
-                if(discountRow) discountRow.classList.add('hidden');
-                if(shippingText) shippingText.innerText = '¡Envío GRATIS a todo el país desde $90.000!';
+                if (totalEl) totalEl.innerText = '$0 ARS';
+                if (subtotalRow) subtotalRow.classList.add('hidden');
+                if (discountRow) discountRow.classList.add('hidden');
+                if (couponStatus) couponStatus.classList.add('hidden');
+                if (removeCouponBtn) removeCouponBtn.classList.add('hidden');
+                if (shippingText) shippingText.innerText = '¡Envío GRATIS a todo el país desde $90.000!';
+                if (shippingAlert) {
+                    shippingAlert.className = "bg-meraki-sand/70 px-6 py-3 border-b border-meraki-sand text-xs font-semibold text-meraki-dark flex items-center space-x-2";
+                }
                 return;
             }
 
@@ -480,9 +517,9 @@
                         <p class="text-sm font-extrabold text-meraki-ocean mt-1">$${(item.price * item.qty).toLocaleString('es-AR')} ARS</p>
                     </div>
                     <div class="flex items-center space-x-2 bg-white border border-meraki-sand rounded-lg px-2 py-1">
-                        <button id="minus-${index}" class="text-gray-500 hover:text-meraki-dark px-1.5 font-bold cursor-pointer">-</button>
+                        <button id="minus-${index}" type="button" aria-label="Restar unidad" class="text-gray-500 hover:text-meraki-dark px-1.5 font-bold cursor-pointer">-</button>
                         <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
-                        <button id="plus-${index}" class="text-gray-500 hover:text-meraki-dark px-1.5 font-bold cursor-pointer">+</button>
+                        <button id="plus-${index}" type="button" aria-label="Sumar unidad" class="text-gray-500 hover:text-meraki-dark px-1.5 font-bold cursor-pointer">+</button>
                     </div>
                 `;
                 container.appendChild(div);
@@ -491,28 +528,41 @@
                 div.querySelector(`#plus-${index}`).addEventListener('click', () => updateQty(index, 1));
             });
 
-            // Cálculo de Descuento
-            let discountAmount = subtotal * appliedDiscount;
-            let total = subtotal - discountAmount;
+            const discountAmount = subtotal * appliedDiscount;
+            const total = subtotal - discountAmount;
+            const pct = Math.round(appliedDiscount * 100);
 
-            if (appliedDiscount > 0) {
-                if(subtotalRow) subtotalRow.classList.remove('hidden');
-                if(discountRow) discountRow.classList.remove('hidden');
-                if(subtotalEl) subtotalEl.innerText = `$${subtotal.toLocaleString('es-AR')} ARS`;
-                if(discountEl) discountEl.innerText = `-$${discountAmount.toLocaleString('es-AR')} ARS`;
-                
-                if(couponMsg && appliedCouponCode) {
-                    couponMsg.innerText = `¡Cupón "${appliedCouponCode}" aplicado con éxito (-15%)!`;
-                    couponMsg.className = "text-[11px] mt-1.5 font-bold text-green-600";
-                    couponMsg.classList.remove('hidden');
-                    if(couponInput) couponInput.value = appliedCouponCode;
+            if (appliedDiscount > 0 && appliedCouponCode) {
+                if (subtotalRow) subtotalRow.classList.remove('hidden');
+                if (discountRow) discountRow.classList.remove('hidden');
+                if (subtotalEl) subtotalEl.innerText = `$${subtotal.toLocaleString('es-AR')} ARS`;
+                if (discountLabel) discountLabel.innerText = `Descuento aplicado (${pct}%):`;
+                if (discountEl) discountEl.innerText = `-$${discountAmount.toLocaleString('es-AR')} ARS`;
+
+                if (couponStatus && couponMsg && removeCouponBtn) {
+                    couponMsg.innerText = `¡Cupón "${appliedCouponCode}" aplicado (${pct}% OFF)!`;
+                    couponMsg.className = "text-[11px] font-bold text-green-600";
+                    removeCouponBtn.classList.remove('hidden');
+                    couponStatus.classList.remove('hidden');
                 }
+                if (couponInput) couponInput.value = appliedCouponCode;
             } else {
-                if(subtotalRow) subtotalRow.classList.add('hidden');
-                if(discountRow) discountRow.classList.add('hidden');
+                if (subtotalRow) subtotalRow.classList.add('hidden');
+                if (discountRow) discountRow.classList.add('hidden');
+                if (removeCouponBtn) removeCouponBtn.classList.add('hidden');
+
+                if (couponStatus && couponMsg) {
+                    if (couponErrorMessage) {
+                        couponMsg.innerText = couponErrorMessage;
+                        couponMsg.className = "text-[11px] font-bold text-meraki-terracotta";
+                        couponStatus.classList.remove('hidden');
+                    } else {
+                        couponStatus.classList.add('hidden');
+                    }
+                }
             }
 
-            if(totalEl) totalEl.innerText = `$${total.toLocaleString('es-AR')} ARS`;
+            if (totalEl) totalEl.innerText = `$${total.toLocaleString('es-AR')} ARS`;
 
             if (shippingText && shippingAlert) {
                 if (total >= FREE_SHIPPING_LIMIT) {
@@ -528,24 +578,39 @@
 
         document.getElementById('apply-coupon').addEventListener('click', () => {
             const codeInput = document.getElementById('coupon-input').value.trim().toUpperCase();
-            const couponMsg = document.getElementById('coupon-msg');
 
-            if (codeInput === "MERAKI15") {
-                appliedDiscount = 0.15;
+            if (!codeInput) {
+                clearCouponState();
+                couponErrorMessage = "Ingresá un código de descuento.";
+                renderCartItems();
+                return;
+            }
+
+            if (Object.prototype.hasOwnProperty.call(COUPONS, codeInput)) {
+                appliedDiscount = COUPONS[codeInput];
                 appliedCouponCode = codeInput;
+                couponErrorMessage = "";
                 localStorage.setItem('meraki_discount', appliedDiscount);
                 localStorage.setItem('meraki_coupon', appliedCouponCode);
                 renderCartItems();
             } else {
                 appliedDiscount = 0;
                 appliedCouponCode = "";
+                couponErrorMessage = "Código inválido o expirado.";
                 localStorage.removeItem('meraki_discount');
                 localStorage.removeItem('meraki_coupon');
-                couponMsg.innerText = "Código inválido o expirado.";
-                couponMsg.className = "text-[11px] mt-1.5 font-bold text-meraki-terracotta";
-                couponMsg.classList.remove('hidden');
                 renderCartItems();
             }
+        });
+
+        document.getElementById('remove-coupon').addEventListener('click', () => {
+            clearCouponState();
+            renderCartItems();
+        });
+
+        document.getElementById('delivery-method').addEventListener('change', (e) => {
+            deliveryMethod = e.target.value;
+            localStorage.setItem('meraki_delivery', deliveryMethod);
         });
 
         function openCart() {
@@ -573,33 +638,36 @@
         });
 
         document.getElementById('checkout-whatsapp').addEventListener('click', () => {
-            if(cart.length === 0) {
+            if (cart.length === 0) {
                 alert("Agregá al menos una malla al carrito antes de enviar el pedido.");
                 return;
             }
-            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            let discountAmount = subtotal * appliedDiscount;
-            let total = subtotal - discountAmount;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discountAmount = subtotal * appliedDiscount;
+            const total = subtotal - discountAmount;
+            const pct = Math.round(appliedDiscount * 100);
 
             let message = "Hola *MERAKI SWIM.CO*! 👋 Quisiera realizar el siguiente pedido:\n\n";
             cart.forEach(item => {
                 message += `▪️ *${item.name}*\n   Talle: ${item.size} | Cantidad: ${item.qty} | Subtotal: $${(item.price * item.qty).toLocaleString('es-AR')} ARS\n\n`;
             });
+
+            message += `📦 Modalidad: *${deliveryMethod}*\n`;
             
             if (appliedDiscount > 0) {
-                message += `🎟️ Cupón aplicado: *${appliedCouponCode}* (-15%)\n`;
+                message += `🎟️ Cupón aplicado: *${appliedCouponCode}* (-${pct}%)\n`;
                 message += `Subtotal: $${subtotal.toLocaleString('es-AR')} ARS\n`;
                 message += `Descuento: -$${discountAmount.toLocaleString('es-AR')} ARS\n`;
             }
 
-            if (total >= FREE_SHIPPING_LIMIT) {
+            if (deliveryMethod === "Envío a domicilio" && total >= FREE_SHIPPING_LIMIT) {
                 message += `🚚 *¡ENVÍO GRATIS APLICADO!*\n`;
             }
             
-            message += `*TOTAL A ABONAR: $${total.toLocaleString('es-AR')} ARS*\n\nQuedo a la espera para coordinar el pago y envío. ¡Gracias!`;
+            message += `*TOTAL A ABONAR: $${total.toLocaleString('es-AR')} ARS*\n\nQuedo a la espera para coordinar el pago y entrega. ¡Gracias!`;
             
             const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank', 'noopener,noreferrer');
         });
 
         document.addEventListener("DOMContentLoaded", () => {
