@@ -292,8 +292,9 @@
             { id: 11, name: "Boardshort Hurley Phantom Blue Icon", price: null, available: false, category: "clasica", images: ["hurley azul-reverso.webp", "hurley azul.webp"], badge: "Clásica" },
             { id: 12, name: "Boardshort Taverniti Color Block Camo", price: null, available: false, category: "clasica", images: ["malla taverniti-reverso.webp", "malla taverniti.webp"], badge: "Clásica" },
 
-            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["malla violeta-reverso.webp", "malla violeta.webp"], badge: "Urbanos" },
-            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["malla letras flow-reverso.webp", "malla letras flow.webp"], badge: "Urbanos" }
+            // Categoría Urbanos: Frente primero, luego Dorso
+            { id: 13, name: "Boardshort MCD Pinstripe Purple", price: null, available: false, category: "urbanos", images: ["frente-violeta.jpeg", "dorso-violeta.jpeg"], badge: "Urbanos" },
+            { id: 14, name: "Boardshort Quiksilver Flow Gothic Black", price: null, available: false, category: "urbanos", images: ["frente-quicksilver.jpeg", "dorso-quicksilver.jpeg"], badge: "Urbanos" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('meraki_cart')) || [];
